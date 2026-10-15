@@ -47,7 +47,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
     onUpdateFilmInfo?.(film.id, {
       title: title.trim() || film.title, releaseYear: Number(year) || film.releaseYear, runtimeMinutes: Number(runtime) || film.runtimeMinutes,
       director: director.trim() || film.director, writer: writer.trim() || film.writer, cinematographer: cinematographer.trim() || film.cinematographer,
-      movementName: movement.trim() || undefined, genres: genres.split(',').map(g => g.trim()).filter(Boolean),
+      movementName: movement.trim() || undefined, genres: genres.split(',').map(g => g.trim()).filter(Boolean), synopsis: synopsis.trim() || film.synopsis,
       link: link.trim() || undefined
     });
     setEditing(false);
@@ -67,6 +67,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
           <label className="text-[10px] font-mono uppercase">Cinematographer<input value={cinematographer} onChange={e => setCinematographer(e.target.value)} className="w-full editor-input" /></label>
           <label className="text-[10px] font-mono uppercase">Movement<input value={movement} onChange={e => setMovement(e.target.value)} className="w-full editor-input" /></label>
           <label className="text-[10px] font-mono uppercase">Genres<input value={genres} onChange={e => setGenres(e.target.value)} className="w-full editor-input" /></label>
+          <label className="text-[10px] font-mono uppercase sm:col-span-2">Synopsis<textarea value={synopsis} onChange={e => setSynopsis(e.target.value)} className="w-full editor-input" rows={3} /></label>
           <label className="text-[10px] font-mono uppercase sm:col-span-2">Film link<input type="url" value={link} onChange={e => setLink(e.target.value)} placeholder="https://…" className="w-full editor-input" /></label>
         </div>
         <div className="flex justify-between pt-2 border-t border-[#e3deda]">
@@ -102,6 +103,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
 
       {expanded && <div className="border-t border-[#e3deda] p-4 space-y-3 text-xs" onClick={e => e.stopPropagation()}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono"><div><span className="text-[#7f9183]">Director</span><div className="font-semibold">{film.director}</div></div><div><span className="text-[#7f9183]">Writer</span><div>{film.writer}</div></div><div><span className="text-[#7f9183]">Cinematographer</span><div>{film.cinematographer}</div></div><div><span className="text-[#7f9183]">Genre</span><div>{film.genres.join(' · ')}</div></div>{film.movementName && <div><span className="text-[#7f9183]">Movement</span><div>{film.movementName}</div></div>}</div>
+        <div><span className="text-[#7f9183] font-mono">Synopsis</span><p className="mt-1 leading-relaxed">{film.synopsis}</p></div>
         {film.link && <a href={film.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-[#586f6b] underline"><ExternalLink className="w-3 h-3" />Film link</a>}
       </div>}
 
