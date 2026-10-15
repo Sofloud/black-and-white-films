@@ -32,8 +32,8 @@ export const Header: React.FC<HeaderProps> = ({
             className="flex items-center text-left group focus:outline-none cursor-pointer"
             aria-label="Home"
           >
-            <div className="w-9 h-9 rounded bg-[#586f6b]/10 border border-[#7f9183]/50 flex items-center justify-center text-[#586f6b] group-hover:border-[#586f6b] transition-colors">
-              <FilmIcon className="w-5 h-5 text-[#586f6b]" />
+            <div className="w-9 h-9 rounded bg-[#383838] border border-[#514747] flex items-center justify-center text-[#c1b4af] group-hover:border-[#777777] transition-colors">
+              <FilmIcon className="w-5 h-5 text-[#c1b4af]" />
             </div>
           </button>
         </div>
@@ -90,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             type="button"
             onClick={onOpenAddModal}
-            className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold tracking-wide text-[#ffffff] bg-[#586f6b] hover:bg-[#485c58] active:bg-[#3d4f4b] rounded transition-colors whitespace-nowrap shadow-sm cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold tracking-wide text-[#ffffff] bg-[#414141] hover:bg-[#555555] active:bg-[#333333] rounded transition-colors whitespace-nowrap shadow-sm cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>Add Film</span>

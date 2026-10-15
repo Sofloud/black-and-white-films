@@ -104,7 +104,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f5f3] text-[#222d2b] film-grain flex flex-col selection:bg-[#7f9183]/30 selection:text-[#222d2b]">
+    <div className="min-h-screen bg-[#f7f5f3] text-[#222d2b] film-grain flex flex-col selection:bg-[#777777]/30 selection:text-[#eeeeee]">
       
       {/* 3-Zone Header */}
       <Header
@@ -195,9 +195,9 @@ export default function App() {
       </main>
 
       {/* Institutional Quiet Light Footer */}
-      <footer className="border-t border-[#cfc0bd] bg-[#ffffff] mt-16 text-xs text-[#586f6b] py-8 px-4 sm:px-6 lg:px-8">
+      <footer className="border-t border-[#cfc0bd] bg-[#ffffff] mt-16 text-xs text-[#c1b4af] py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono">
-          <div className="text-[#586f6b] flex items-center gap-4">
+          <div className="text-[#c1b4af] flex items-center gap-4">
             <span>Progress: {overallStats.watched} of {overallStats.total} viewed ({overallStats.percentage}%)</span>
             <span>·</span>
             <span>Records stored locally</span>
