@@ -29,6 +29,7 @@ export const AddFilmModal: React.FC<AddFilmModalProps> = ({
   const [cinematographyAnalysis, setCinematographyAnalysis] = useState('');
   const [historicalSignificance, setHistoricalSignificance] = useState('');
   const [keyScene, setKeyScene] = useState('');
+  const [attachmentsText, setAttachmentsText] = useState('');
   const [initialWatched, setInitialWatched] = useState(false);
   const [initialReaction, setInitialReaction] = useState<ReactionType>('none');
 
@@ -86,7 +87,8 @@ export const AddFilmModal: React.FC<AddFilmModalProps> = ({
       historicalSignificance:
         historicalSignificance.trim() ||
         'Historical context within the auteur’s filmography and broader cinematic history.',
-      keyScene: keyScene.trim() || 'Key sequence selected for formal stylistic breakdown.'
+      keyScene: keyScene.trim() || 'Key sequence selected for formal stylistic breakdown.',
+      attachments: attachmentsText.split('\n').map((url) => url.trim()).filter(Boolean)
     };
 
     onAddFilm(newFilmData, initialWatched, initialReaction);
@@ -316,6 +318,11 @@ export const AddFilmModal: React.FC<AddFilmModalProps> = ({
               placeholder="Concise overview of premise and thematic conflict..."
               className="w-full bg-[#f7f5f3] border border-[#cfc0bd] rounded p-2.5 text-[#222d2b] focus:border-[#586f6b] focus:outline-none"
             />
+          </div>
+
+          <div>
+            <label className="block text-[#455854] font-medium mb-1">Attachments (one URL per line)</label>
+            <textarea rows={3} value={attachmentsText} onChange={(e) => setAttachmentsText(e.target.value)} placeholder={"https://example.com/film-notes\\nhttps://example.com/interview"} className="w-full bg-[#f7f5f3] border border-[#cfc0bd] rounded p-2.5 text-[#222d2b] focus:border-[#586f6b] focus:outline-none" />
           </div>
 
           {/* Initial Status Checks - Emoji only, supports unhearting */}
