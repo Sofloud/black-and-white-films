@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="border-b border-[#cfc0bd] bg-[#ffffff]/95 backdrop-blur-md sticky top-0 z-40">
+    <header className="border-b border-[#cfc0bd] bg-[#202020]/95 backdrop-blur-md sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-8">
         
         {/* Zone 1: Icon Mark */}
@@ -44,8 +44,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleNavClick('movements')}
             className={`whitespace-nowrap shrink-0 transition-colors pb-1 border-b-2 cursor-pointer ${
               activeTab === 'movements'
-                ? 'text-[#222d2b] border-[#586f6b] font-semibold'
-                : 'text-[#586f6b] hover:text-[#222d2b] border-transparent'
+                ? 'text-[#c64b4b] border-[#c64b4b] font-semibold'
+                : 'text-[#c64b4b] hover:text-[#e07171] border-transparent'
             }`}
           >
             Film Movements
@@ -55,8 +55,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleNavClick('directors')}
             className={`whitespace-nowrap shrink-0 transition-colors pb-1 border-b-2 cursor-pointer ${
               activeTab === 'directors'
-                ? 'text-[#222d2b] border-[#586f6b] font-semibold'
-                : 'text-[#586f6b] hover:text-[#222d2b] border-transparent'
+                ? 'text-[#c64b4b] border-[#c64b4b] font-semibold'
+                : 'text-[#c64b4b] hover:text-[#e07171] border-transparent'
             }`}
           >
             Selected Directors
@@ -66,8 +66,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleNavClick('readings')}
             className={`whitespace-nowrap shrink-0 transition-colors pb-1 border-b-2 cursor-pointer ${
               activeTab === 'readings'
-                ? 'text-[#222d2b] border-[#586f6b] font-semibold'
-                : 'text-[#586f6b] hover:text-[#222d2b] border-transparent'
+                ? 'text-[#c64b4b] border-[#c64b4b] font-semibold'
+                : 'text-[#c64b4b] hover:text-[#e07171] border-transparent'
             }`}
           >
             Reading
@@ -77,8 +77,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleNavClick('catalog')}
             className={`whitespace-nowrap shrink-0 transition-colors pb-1 border-b-2 cursor-pointer ${
               activeTab === 'catalog'
-                ? 'text-[#222d2b] border-[#586f6b] font-semibold'
-                : 'text-[#586f6b] hover:text-[#222d2b] border-transparent'
+                ? 'text-[#c64b4b] border-[#c64b4b] font-semibold'
+                : 'text-[#c64b4b] hover:text-[#e07171] border-transparent'
             }`}
           >
             All Films ({totalFilms})
@@ -100,11 +100,11 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Mobile nav bar */}
-      <div className="md:hidden flex items-center justify-around border-t border-[#cfc0bd] px-2 py-2 overflow-x-auto text-xs bg-[#ffffff]">
+      <div className="md:hidden flex items-center justify-around border-t border-[#cfc0bd] px-2 py-2 overflow-x-auto text-xs bg-[#292929]">
         <button
           onClick={() => handleNavClick('movements')}
           className={`px-2 py-1 whitespace-nowrap cursor-pointer ${
-            activeTab === 'movements' ? 'text-[#222d2b] font-bold border-b-2 border-[#586f6b]' : 'text-[#586f6b]'
+            activeTab === 'movements' ? 'text-[#c64b4b] font-bold border-b-2 border-[#c64b4b]' : 'text-[#c64b4b]'
           }`}
         >
           Film Movements
@@ -112,7 +112,7 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           onClick={() => handleNavClick('directors')}
           className={`px-2 py-1 whitespace-nowrap cursor-pointer ${
-            activeTab === 'directors' ? 'text-[#222d2b] font-bold border-b-2 border-[#586f6b]' : 'text-[#586f6b]'
+            activeTab === 'directors' ? 'text-[#c64b4b] font-bold border-b-2 border-[#c64b4b]' : 'text-[#c64b4b]'
           }`}
         >
           Selected Directors
@@ -120,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           onClick={() => handleNavClick('readings')}
           className={`px-2 py-1 whitespace-nowrap cursor-pointer ${
-            activeTab === 'readings' ? 'text-[#222d2b] font-bold border-b-2 border-[#586f6b]' : 'text-[#586f6b]'
+            activeTab === 'readings' ? 'text-[#c64b4b] font-bold border-b-2 border-[#c64b4b]' : 'text-[#c64b4b]'
           }`}
         >
           Reading
@@ -128,7 +128,7 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           onClick={() => handleNavClick('catalog')}
           className={`px-2 py-1 whitespace-nowrap cursor-pointer ${
-            activeTab === 'catalog' ? 'text-[#222d2b] font-bold border-b-2 border-[#586f6b]' : 'text-[#586f6b]'
+            activeTab === 'catalog' ? 'text-[#c64b4b] font-bold border-b-2 border-[#c64b4b]' : 'text-[#c64b4b]'
           }`}
         >
           All Films
