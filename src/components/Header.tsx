@@ -1,5 +1,5 @@
 import React from 'react';
-import { Film as FilmIcon, Plus, Eye, Pencil } from 'lucide-react';
+import { Film as FilmIcon, Plus } from 'lucide-react';
 
 export type ActiveTab = 'movements' | 'directors' | 'readings' | 'catalog';
 
@@ -7,20 +7,14 @@ interface HeaderProps {
   activeTab: ActiveTab;
   onSelectTab: (tab: ActiveTab) => void;
   onOpenAddModal: () => void;
-  onOpenEditModal: () => void;
-  watchedCount: number;
   totalFilms: number;
-  likedCount: number;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   activeTab,
   onSelectTab,
   onOpenAddModal,
-  onOpenEditModal,
-  watchedCount,
-  totalFilms,
-  likedCount
+  totalFilms
 }) => {
   const handleNavClick = (tab: ActiveTab) => {
     onSelectTab(tab);
@@ -91,31 +85,8 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </nav>
 
-        {/* Zone 3: Watched count, emoji heart count, Edit button, and Add Film primary button */}
+        {/* Zone 3: Add Film action only */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          <div className="hidden lg:flex items-center gap-3 text-xs text-[#586f6b] font-mono mr-1">
-            <span className="flex items-center gap-1.5 text-[#222d2b]">
-              <Eye className="w-3.5 h-3.5 text-[#7f9183]" />
-              <strong className="text-[#222d2b] font-semibold">{watchedCount}</strong> / {totalFilms} watched
-            </span>
-            <span className="text-[#cfc0bd]">·</span>
-            <span className="flex items-center gap-1 text-[#222d2b]" title={`${likedCount} films hearted`}>
-              <span>❤️</span>
-              <strong className="text-[#222d2b] font-semibold">{likedCount}</strong>
-            </span>
-          </div>
-
-          {/* Single Edit Button in the Top Right Corner - just pen sign like in film editing */}
-          <button
-            type="button"
-            onClick={onOpenEditModal}
-            className="p-2 sm:p-2.5 text-[#586f6b] hover:text-[#222d2b] bg-[#ffffff] hover:bg-[#f7f5f3] active:bg-[#e3deda] border border-[#cfc0bd] hover:border-[#586f6b] rounded transition-colors shadow-xs cursor-pointer flex items-center justify-center"
-            title="Edit info"
-            aria-label="Edit info"
-          >
-            <Pencil className="w-4 h-4" />
-          </button>
-
           <button
             type="button"
             onClick={onOpenAddModal}
