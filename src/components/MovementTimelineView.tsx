@@ -77,6 +77,7 @@ export const MovementTimelineView: React.FC<MovementTimelineViewProps> = ({
   const [mvEra, setMvEra] = useState('');
   const [mvOrigin, setMvOrigin] = useState('');
   const [mvHistoricalContext, setMvHistoricalContext] = useState('');
+  const [mvAttachmentsText, setMvAttachmentsText] = useState('');
 
   const movementList = movements && movements.length > 0 ? movements : MOVEMENTS_DATA;
 
@@ -95,6 +96,7 @@ export const MovementTimelineView: React.FC<MovementTimelineViewProps> = ({
     setMvEra(m.era);
     setMvOrigin(m.originCountry);
     setMvHistoricalContext(m.historicalContext || '');
+    setMvAttachmentsText((m.attachments || []).join('\n'));
   };
 
   const handleSaveMovement = (movementId: string) => {
@@ -103,7 +105,8 @@ export const MovementTimelineView: React.FC<MovementTimelineViewProps> = ({
         name: mvName.trim() || undefined,
         era: mvEra.trim() || undefined,
         originCountry: mvOrigin.trim() || undefined,
-        historicalContext: mvHistoricalContext.trim() || undefined
+        historicalContext: mvHistoricalContext.trim() || undefined,
+        attachments: mvAttachmentsText.split('\n').map((url) => url.trim()).filter(Boolean)
       });
     }
     setEditingMovementId(null);
@@ -336,6 +339,10 @@ export const MovementTimelineView: React.FC<MovementTimelineViewProps> = ({
                       />
                     </div>
 
+                    <div className="mt-3">
+                      <label className="block text-[10px] uppercase tracking-widest font-mono text-[#586f6b] mb-1">Attachments (one URL per line)</label>
+                      <textarea rows={3} value={mvAttachmentsText} onChange={(e) => setMvAttachmentsText(e.target.value)} placeholder={"https://example.com/essay\nhttps://example.com/archive"} className="w-full bg-[#f7f5f3] border border-[#cfc0bd] rounded p-2 text-xs text-[#222d2b] focus:border-[#586f6b] focus:outline-none" />
+                    </div>
                     <div className="flex items-center justify-between pt-2 border-t border-[#cfc0bd] font-mono text-xs">
                       {movementEdited && onResetMovementInfo ? (
                         <button
@@ -406,6 +413,15 @@ export const MovementTimelineView: React.FC<MovementTimelineViewProps> = ({
                       <p className="text-xs sm:text-sm text-[#455854] leading-relaxed mb-3">
                         {movement.historicalContext}
                       </p>
+                    )}
+
+                    {movement.attachments && movement.attachments.length > 0 && (
+                      <div className="mt-3">
+                        <div className="text-[10px] uppercase tracking-widest font-mono text-[#7f9183] mb-1">Attachments</div>
+                        <div className="flex flex-wrap gap-2">
+                          {movement.attachments.map((url, index) => <a key={url + index} href={url} target="_blank" rel="noreferrer" className="text-xs text-[#586f6b] underline underline-offset-2 hover:text-[#222d2b]">Attachment {index + 1}</a>)}
+                        </div>
+                      </div>
                     )}
                   </div>
                 )}
