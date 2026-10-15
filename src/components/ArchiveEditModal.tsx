@@ -70,6 +70,7 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
   });
   const [filmSearchQuery, setFilmSearchQuery] = useState('');
   const [filmFormData, setFilmFormData] = useState<Partial<Film>>({});
+  const [filmAttachmentsText, setFilmAttachmentsText] = useState('');
 
   // Director State
   const [selectedDirectorId, setSelectedDirectorId] = useState<string>(() => {
@@ -79,6 +80,7 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
   });
   const [directorFormData, setDirectorFormData] = useState<Partial<DirectorInfo>>({});
   const [thematicFixationsText, setThematicFixationsText] = useState('');
+  const [directorAttachmentsText, setDirectorAttachmentsText] = useState('');
 
   // Movement State
   const [selectedMovementId, setSelectedMovementId] = useState<string>(() => {
@@ -88,6 +90,7 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
   });
   const [movementFormData, setMovementFormData] = useState<Partial<MovementInfo>>({});
   const [coreAestheticsText, setCoreAestheticsText] = useState('');
+  const [movementAttachmentsText, setMovementAttachmentsText] = useState('');
 
   // Sync tab and target if modal re-opens
   useEffect(() => {
@@ -130,8 +133,10 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
         historicalSignificance: currentFilm.historicalSignificance || '',
         cinematographyAnalysis: currentFilm.cinematographyAnalysis || '',
         keyScene: currentFilm.keyScene || '',
-        posterUrl: currentFilm.posterUrl || ''
+        posterUrl: currentFilm.posterUrl || '',
+        attachments: currentFilm.attachments || []
       });
+      setFilmAttachmentsText((currentFilm.attachments || []).join('\n'));
     }
   }, [currentFilm]);
 
@@ -152,6 +157,7 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
         quote: currentDirector.quote
       });
       setThematicFixationsText(currentDirector.thematicFixations.join('\n'));
+      setDirectorAttachmentsText((currentDirector.attachments || []).join('\n'));
     }
   }, [currentDirector]);
 
@@ -173,6 +179,7 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
         visualMotif: { ...currentMovement.visualMotif }
       });
       setCoreAestheticsText(currentMovement.coreAesthetics.join('\n'));
+      setMovementAttachmentsText((currentMovement.attachments || []).join('\n'));
     }
   }, [currentMovement]);
 
@@ -228,6 +235,7 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
     const selectedMv = movements.find((m) => m.id === filmFormData.movementId);
     const updates: Partial<Film> = {
       ...filmFormData,
+      attachments: filmAttachmentsText.split('\n').map((url) => url.trim()).filter(Boolean),
       movementName: selectedMv ? selectedMv.name : filmFormData.movementName
     };
 
@@ -252,6 +260,7 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
 
     const updates: Partial<DirectorInfo> = {
       ...directorFormData,
+      attachments: directorAttachmentsText.split('\n').map((url) => url.trim()).filter(Boolean),
       thematicFixations: parsedThemes.length > 0 ? parsedThemes : currentDirector.thematicFixations
     };
 
@@ -276,6 +285,7 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
 
     const updates: Partial<MovementInfo> = {
       ...movementFormData,
+      attachments: movementAttachmentsText.split('\n').map((url) => url.trim()).filter(Boolean),
       coreAesthetics: parsedAesthetics.length > 0 ? parsedAesthetics : currentMovement.coreAesthetics
     };
 
@@ -602,6 +612,20 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
                     </div>
                   </div>
 
+                  {/* Film Attachments */}
+                  <div>
+                    <label className="block text-xs font-bold text-[#222d2b] font-mono uppercase mb-1">
+                      Attachments (one URL per line)
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={filmAttachmentsText}
+                      onChange={(e) => setFilmAttachmentsText(e.target.value)}
+                      placeholder={"https://example.com/film-notes\nhttps://example.com/interview"}
+                      className="w-full bg-[#f7f5f3] border border-[#cfc0bd] rounded p-3 text-xs text-[#222d2b] focus:border-[#586f6b] focus:bg-[#ffffff] focus:outline-none"
+                    />
+                  </div>
+
                   {/* Genres Editor */}
                   <div>
                     <label className="block text-xs font-bold text-[#222d2b] font-mono uppercase mb-1">
@@ -697,6 +721,20 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
                       onChange={(e) => setFilmFormData({ ...filmFormData, keyScene: e.target.value })}
                       placeholder="Describe the defining sequence..."
                       className="w-full bg-[#f7f5f3] border border-[#cfc0bd] rounded p-3 text-xs text-[#222d2b] leading-relaxed focus:border-[#586f6b] focus:bg-[#ffffff] focus:outline-none"
+                    />
+                  </div>
+
+                  {/* Director Attachments */}
+                  <div>
+                    <label className="block text-xs font-bold text-[#222d2b] font-mono uppercase mb-1">
+                      Attachments (one URL per line)
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={directorAttachmentsText}
+                      onChange={(e) => setDirectorAttachmentsText(e.target.value)}
+                      placeholder={"https://example.com/director-interview\nhttps://example.com/biography"}
+                      className="w-full bg-[#f7f5f3] border border-[#cfc0bd] rounded p-3 text-xs text-[#222d2b] focus:border-[#586f6b] focus:bg-[#ffffff] focus:outline-none"
                     />
                   </div>
 
@@ -1020,6 +1058,20 @@ export const ArchiveEditModal: React.FC<ArchiveEditModalProps> = ({
                       onChange={(e) => setMovementFormData({ ...movementFormData, historicalContext: e.target.value })}
                       placeholder="Historical backdrop, key filmmakers, cultural impact (optional)..."
                       className="w-full bg-[#f7f5f3] border border-[#cfc0bd] rounded p-3 text-xs sm:text-sm text-[#222d2b] leading-relaxed focus:border-[#586f6b] focus:bg-[#ffffff] focus:outline-none"
+                    />
+                  </div>
+
+                  {/* Movement Attachments */}
+                  <div>
+                    <label className="block text-xs font-bold text-[#222d2b] font-mono uppercase mb-1">
+                      Attachments (one URL per line)
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={movementAttachmentsText}
+                      onChange={(e) => setMovementAttachmentsText(e.target.value)}
+                      placeholder={"https://example.com/movement-essay\nhttps://example.com/film-history"}
+                      className="w-full bg-[#f7f5f3] border border-[#cfc0bd] rounded p-3 text-xs text-[#222d2b] focus:border-[#586f6b] focus:bg-[#ffffff] focus:outline-none"
                     />
                   </div>
 
