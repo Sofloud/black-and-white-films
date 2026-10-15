@@ -80,13 +80,13 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
   const poster = film.posterUrl;
   const posterClass = 'w-full h-full object-cover grayscale transition-[filter,transform] duration-300 group-hover:grayscale-0 group-hover:scale-105';
   return (
-    <article className="group relative bg-white border border-[#cfc0bd] hover:border-[#7f9183] rounded-lg overflow-hidden shadow-xs hover:shadow-md transition-all">
-      <div className="flex gap-4 p-4 cursor-pointer" onClick={() => setExpanded(v => !v)}>
-        <div className={`${displayMode === 'posters' ? 'w-full aspect-[2/3]' : 'w-24 sm:w-28 aspect-[2/3]'} shrink-0 rounded bg-[#f7f5f3] border border-[#cfc0bd] overflow-hidden relative`}>
+    <article className={`group relative bg-white border border-[#cfc0bd] hover:border-[#7f9183] rounded-lg overflow-hidden shadow-xs hover:shadow-md transition-all ${displayMode === 'posters' && expanded ? 'w-full' : ''}`}>
+      <div className={`flex gap-4 p-4 cursor-pointer ${displayMode === 'posters' && expanded ? 'items-start' : ''}`} onClick={() => setExpanded(v => !v)}>
+        <div className={`${displayMode === 'posters' ? (expanded ? 'w-24 sm:w-28 aspect-[2/3]' : 'w-full aspect-[2/3]') : 'w-24 sm:w-28 aspect-[2/3]'} shrink-0 rounded bg-[#f7f5f3] border border-[#cfc0bd] overflow-hidden relative`}>
           {poster ? <img src={poster} alt={`${film.title} poster`} className={posterClass} loading="lazy" referrerPolicy="no-referrer" /> : <div className="h-full flex items-center justify-center text-xs font-mono text-[#7f9183]">{film.releaseYear}</div>}
           {displayMode !== 'posters' && <div className="absolute top-2 left-2"><button type="button" onClick={e => { e.stopPropagation(); onToggleWatched(film.id); }} className={`p-1.5 rounded-full shadow-xs ${isWatched ? 'bg-[#586f6b] text-white' : 'bg-white/90 text-[#586f6b]'}`} title={isWatched ? 'Mark unwatched' : 'Mark watched'}><Check className="w-3.5 h-3.5" /></button></div>}
         </div>
-        <div className={`${displayMode === 'posters' ? 'hidden' : 'flex'} flex-1 min-w-0 flex-col justify-between`}>
+        <div className={`${displayMode === 'posters' && !expanded ? 'hidden' : 'flex'} flex-1 min-w-0 flex-col justify-between`}>
           <div>
             <div className="flex items-start justify-between gap-2"><h3 className="font-serif-cinematic text-xl font-semibold text-[#222d2b] truncate">{film.title}</h3><span className="text-[#7f9183] text-xs">{expanded ? '−' : '+'}</span></div>
             <div className="mt-2 text-[11px] font-mono text-[#586f6b] flex items-center gap-2"><span className="font-semibold text-[#222d2b]">{film.releaseYear}</span><span>·</span><span>{film.runtimeMinutes}m</span><span>·</span><span>{isWatched ? 'Watched' : 'Unwatched'}</span></div>
@@ -98,12 +98,11 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
         </div>
       </div>
 
-      {displayMode === 'posters' && <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-3 pt-10 text-white"><div className="font-serif-cinematic font-semibold text-sm">{film.title}</div><div className="text-[10px] font-mono">{film.releaseYear} · {film.runtimeMinutes}m</div></div>}
+      {displayMode === 'posters' && !expanded && <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-3 pt-10 text-white"><div className="font-serif-cinematic font-semibold text-sm">{film.title}</div><div className="text-[10px] font-mono">{film.releaseYear} · {film.runtimeMinutes}m</div></div>}
 
       {expanded && <div className="border-t border-[#e3deda] p-4 space-y-3 text-xs" onClick={e => e.stopPropagation()}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono"><div><span className="text-[#7f9183]">Director</span><div className="font-semibold">{film.director}</div></div><div><span className="text-[#7f9183]">Writer</span><div>{film.writer}</div></div><div><span className="text-[#7f9183]">Cinematographer</span><div>{film.cinematographer}</div></div><div><span className="text-[#7f9183]">Genre</span><div>{film.genres.join(' · ')}</div></div>{film.movementName && <div><span className="text-[#7f9183]">Movement</span><div>{film.movementName}</div></div>}</div>
         {film.link && <a href={film.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-[#586f6b] underline"><ExternalLink className="w-3 h-3" />Film link</a>}
-        <div className="flex gap-2 pt-2"><button type="button" onClick={startEdit} className="inline-flex items-center gap-1 px-2.5 py-1 border rounded text-xs"><Pencil className="w-3 h-3" />Edit</button></div>
       </div>}
 
       {confirmDelete && <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={() => setConfirmDelete(false)}><div className="bg-white rounded-xl p-6 max-w-sm w-full" onClick={e => e.stopPropagation()}><h3 className="font-serif-cinematic text-lg font-semibold">Delete this film?</h3><p className="text-xs text-[#586f6b] mt-2">{film.title} will be removed from the archive.</p><div className="flex justify-end gap-2 mt-5"><button onClick={() => setConfirmDelete(false)} className="px-3 py-1 border rounded text-xs">Cancel</button><button onClick={() => { onDeleteFilm?.(film.id); setConfirmDelete(false); }} className="px-3 py-1 bg-red-600 text-white rounded text-xs">Delete</button></div></div></div>}
