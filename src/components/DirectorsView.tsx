@@ -98,6 +98,7 @@ export const DirectorsView: React.FC<DirectorsViewProps> = ({
   const [dirStyle, setDirStyle] = useState('');
   const [dirThemesText, setDirThemesText] = useState('');
   const [dirQuote, setDirQuote] = useState('');
+  const [dirAttachmentsText, setDirAttachmentsText] = useState('');
 
   const handleSelectDirector = (nameOrId: string) => {
     setSelectedDirectorName(nameOrId);
@@ -125,6 +126,7 @@ export const DirectorsView: React.FC<DirectorsViewProps> = ({
     setDirStyle(d.signatureStyle);
     setDirThemesText(d.thematicFixations.join(', '));
     setDirQuote(d.quote || '');
+    setDirAttachmentsText((d.attachments || []).join('\n'));
   };
 
   const handleSaveDirector = (directorId: string) => {
@@ -141,7 +143,8 @@ export const DirectorsView: React.FC<DirectorsViewProps> = ({
         lifespan: dirLifespan.trim() || undefined,
         signatureStyle: dirStyle.trim() || undefined,
         thematicFixations: parsedThemes.length > 0 ? parsedThemes : undefined,
-        quote: dirQuote.trim() || undefined
+        quote: dirQuote.trim() || undefined,
+        attachments: dirAttachmentsText.split('\n').map((url) => url.trim()).filter(Boolean)
       });
     }
     setEditingDirectorId(null);
@@ -505,6 +508,15 @@ export const DirectorsView: React.FC<DirectorsViewProps> = ({
                       <p className="text-xs text-[#586f6b] italic font-serif-cinematic">
                         "{director.quote}"
                       </p>
+                    )}
+
+                    {director.attachments && director.attachments.length > 0 && (
+                      <div className="mt-3">
+                        <div className="text-[10px] uppercase tracking-widest font-mono text-[#7f9183] mb-1">Attachments</div>
+                        <div className="flex flex-wrap gap-2">
+                          {director.attachments.map((url, index) => <a key={url + index} href={url} target="_blank" rel="noreferrer" className="text-xs text-[#586f6b] underline underline-offset-2 hover:text-[#222d2b]">Attachment {index + 1}</a>)}
+                        </div>
+                      </div>
                     )}
                   </div>
                 )}
