@@ -103,3 +103,9 @@
 
 /* Keep the archive controls and overlays readable on dark surfaces. */
 [class~="bg-black/50"] { background-color: rgb(0 0 0 / 70%) !important; }
+
+.film-grain {
+  background-color: #202020 !important;
+  background-image: radial-gradient(rgba(198, 75, 75, 0.035) 1px, transparent 0) !important;
+  background-size: 20px 20px;
+}
