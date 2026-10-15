@@ -456,7 +456,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({
               alt={`${film.title} theatrical poster`}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               referrerPolicy="no-referrer"
-              loading="lazy"
+              loading="eager"
               onError={() => setImgError(true)}
             />
           ) : (
@@ -571,7 +571,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({
                 alt={`${film.title} original theatrical poster`}
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 referrerPolicy="no-referrer"
-                loading="lazy"
+                loading="eager"
                 onError={() => setImgError(true)}
               />
             ) : (
