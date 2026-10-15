@@ -10,10 +10,11 @@ export interface MovementInfo {
   id: MovementId; name: string; era: string; timelineStartYear: number; timelineEndYear: number;
   originCountry: string; manifesto: string; coreAesthetics: string[]; historicalContext: string;
   visualMotif: { symbol: string; description: string; accentColor: string };
+  attachments?: string[];
 }
 
 export interface DirectorInfo {
-  id: DirectorId; name: string; nativeName?: string; link?: string; lifespan: string; nationality: string;
+  id: DirectorId; name: string; nativeName?: string; /** @deprecated migrated to attachments */ link?: string; attachments?: string[]; lifespan: string; nationality: string;
   signatureStyle: string; thematicFixations: string[]; quote: string;
 }
 
@@ -28,7 +29,7 @@ export interface Film {
   movementName?: string; runtimeMinutes: number; aspectRatio: string;
   colorProcess: 'Black & White' | 'Color' | 'Color & Black/White' | 'Black & White / Color' | string;
   synopsis: string; cinematographyAnalysis?: string; historicalSignificance?: string; keyScene?: string;
-  posterUrl?: string; posterArt?: string; link?: string; isCustom?: boolean;
+  posterUrl?: string; posterArt?: string; /** @deprecated migrated to attachments */ link?: string; attachments?: string[]; isCustom?: boolean;
 }
 
 export interface UserFilmState { isWatched: boolean; watchedAt?: string; reaction: ReactionType; personalNotes?: string; }
