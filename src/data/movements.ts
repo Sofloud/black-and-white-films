@@ -25,6 +25,7 @@ export const MOVEMENTS_DATA: MovementInfo[] = [
       description: 'Painted diagonal shadows, warped architectural planes, impossible perspective, and stark chiaroscuro that externalize inner psychological states.',
       accentColor: '#7C3AED'
     }
+    attachments: [],
   },
   {
     id: 'soviet-montage',
@@ -49,6 +50,7 @@ export const MOVEMENTS_DATA: MovementInfo[] = [
       description: 'Dialectical shock cutting, metric temporal collisions, and constructivist geometric vectors.',
       accentColor: '#DC2626'
     }
+    attachments: [],
   },
   {
     id: 'film-noir',
@@ -73,6 +75,7 @@ export const MOVEMENTS_DATA: MovementInfo[] = [
       description: 'Single-source hard lighting, deep inky voids, and diagonal venetian blind shadow bars.',
       accentColor: '#D97706'
     }
+    attachments: [],
   },
   {
     id: 'italian-neorealism',
@@ -97,6 +100,7 @@ export const MOVEMENTS_DATA: MovementInfo[] = [
       description: 'Available daylight, non-professional actors, on-location pavements, and unvarnished realism.',
       accentColor: '#2563EB'
     }
+    attachments: [],
   },
   {
     id: 'french-new-wave',
