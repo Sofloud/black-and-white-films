@@ -85,7 +85,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
       <div className="flex gap-4 p-4 cursor-pointer" onClick={() => setExpanded(v => !v)}>
         <div className={`${displayMode === 'posters' ? 'w-full aspect-[2/3]' : 'w-24 sm:w-28 aspect-[2/3]'} shrink-0 rounded bg-[#f7f5f3] border border-[#cfc0bd] overflow-hidden relative`}>
           {poster ? <img src={poster} alt={`${film.title} poster`} className={posterClass} loading="lazy" referrerPolicy="no-referrer" /> : <div className="h-full flex items-center justify-center text-xs font-mono text-[#7f9183]">{film.releaseYear}</div>}
-          <div className="absolute top-2 left-2"><button type="button" onClick={e => { e.stopPropagation(); onToggleWatched(film.id); }} className={`p-1.5 rounded-full shadow-xs ${isWatched ? 'bg-[#586f6b] text-white' : 'bg-white/90 text-[#586f6b]'}`} title={isWatched ? 'Mark unwatched' : 'Mark watched'}><Check className="w-3.5 h-3.5" /></button></div>
+          {displayMode !== 'posters' && <div className="absolute top-2 left-2"><button type="button" onClick={e => { e.stopPropagation(); onToggleWatched(film.id); }} className={`p-1.5 rounded-full shadow-xs ${isWatched ? 'bg-[#586f6b] text-white' : 'bg-white/90 text-[#586f6b]'}`} title={isWatched ? 'Mark unwatched' : 'Mark watched'}><Check className="w-3.5 h-3.5" /></button></div>}
         </div>
         <div className={`${displayMode === 'posters' ? 'hidden' : 'flex'} flex-1 min-w-0 flex-col justify-between`}>
           <div>
