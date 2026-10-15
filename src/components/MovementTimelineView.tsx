@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Film, UserFilmState, ReactionType, MovementInfo } from '../types/film';
 import { MOVEMENTS_DATA } from '../data/movements';
 import { FilmCard } from './FilmCard';
-import { Pencil, Check, X, RotateCcw } from 'lucide-react';
+import { Pencil, Check, X, RotateCcw, Star } from 'lucide-react';
 
 interface MovementTimelineViewProps {
   films: Film[];
@@ -431,7 +431,7 @@ export const MovementTimelineView: React.FC<MovementTimelineViewProps> = ({
 
                   {/* Just emoji, no "Hearted" text */}
                   <div className="text-[11px] font-mono text-[#222d2b] flex items-center gap-1.5 border-t border-[#e3deda] pt-2" title={`${stats.liked} films hearted`}>
-                    <span>❤️</span>
+                    <Star className="w-3.5 h-3.5" fill={stats.liked > 0 ? "currentColor" : "none"} />
                     <span className="font-semibold">{stats.liked}</span>
                   </div>
                 </div>
