@@ -95,9 +95,6 @@ export const DirectorsView: React.FC<DirectorsViewProps> = ({
   const [dirNativeName, setDirNativeName] = useState('');
   const [dirNationality, setDirNationality] = useState('');
   const [dirLifespan, setDirLifespan] = useState('');
-  const [dirStyle, setDirStyle] = useState('');
-  const [dirThemesText, setDirThemesText] = useState('');
-  const [dirQuote, setDirQuote] = useState('');
   const [dirAttachmentsText, setDirAttachmentsText] = useState('');
 
   const handleSelectDirector = (nameOrId: string) => {
@@ -123,27 +120,16 @@ export const DirectorsView: React.FC<DirectorsViewProps> = ({
     setDirNativeName(d.nativeName || '');
     setDirNationality(d.nationality);
     setDirLifespan(d.lifespan);
-    setDirStyle(d.signatureStyle);
-    setDirThemesText(d.thematicFixations.join(', '));
-    setDirQuote(d.quote || '');
     setDirAttachmentsText((d.attachments || []).join('\n'));
   };
 
   const handleSaveDirector = (directorId: string) => {
     if (onUpdateDirectorInfo) {
-      const parsedThemes = dirThemesText
-        .split(',')
-        .map((t) => t.trim())
-        .filter(Boolean);
-
       onUpdateDirectorInfo(directorId, {
         name: dirName.trim() || undefined,
         nativeName: dirNativeName.trim() || undefined,
         nationality: dirNationality.trim() || undefined,
         lifespan: dirLifespan.trim() || undefined,
-        signatureStyle: dirStyle.trim() || undefined,
-        thematicFixations: parsedThemes.length > 0 ? parsedThemes : undefined,
-        quote: dirQuote.trim() || undefined,
         attachments: dirAttachmentsText.split('\n').map((url) => url.trim()).filter(Boolean)
       });
     }
@@ -382,42 +368,6 @@ export const DirectorsView: React.FC<DirectorsViewProps> = ({
 
                     <div>
                       <label className="block text-[10px] font-mono uppercase text-[#7f9183] mb-0.5 font-semibold">
-                        Signature Style
-                      </label>
-                      <textarea
-                        rows={2}
-                        value={dirStyle}
-                        onChange={(e) => setDirStyle(e.target.value)}
-                        className="w-full bg-[#ffffff] border border-[#cfc0bd] rounded px-2.5 py-1 text-xs text-[#222d2b] focus:border-[#586f6b] focus:outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] font-mono uppercase text-[#7f9183] mb-0.5 font-semibold">
-                        Thematic Fixations (comma separated)
-                      </label>
-                      <input
-                        type="text"
-                        value={dirThemesText}
-                        onChange={(e) => setDirThemesText(e.target.value)}
-                        className="w-full bg-[#ffffff] border border-[#cfc0bd] rounded px-2.5 py-1 text-xs text-[#222d2b] font-mono focus:border-[#586f6b] focus:outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] font-mono uppercase text-[#7f9183] mb-0.5 font-semibold">
-                        Quote / Philosophy
-                      </label>
-                      <textarea
-                        rows={2}
-                        value={dirQuote}
-                        onChange={(e) => setDirQuote(e.target.value)}
-                        className="w-full bg-[#ffffff] border border-[#cfc0bd] rounded px-2.5 py-1 text-xs text-[#222d2b] italic font-serif-cinematic focus:border-[#586f6b] focus:outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] font-mono uppercase text-[#7f9183] mb-0.5 font-semibold">
                         Attachments (one URL per line)
                       </label>
                       <textarea
@@ -499,29 +449,6 @@ export const DirectorsView: React.FC<DirectorsViewProps> = ({
                         <Pencil className="w-3.5 h-3.5" />
                       </button>
                     </div>
-
-                    <p className="text-xs sm:text-sm text-[#455854] leading-relaxed mb-3">
-                      <strong className="text-[#222d2b] font-semibold">Signature Style: </strong>
-                      {director.signatureStyle}
-                    </p>
-
-                    {/* Thematic fixations (unboxed text) */}
-                    <div className="text-xs text-[#586f6b] flex flex-wrap items-center gap-x-2 gap-y-1 mb-3">
-                      <span className="text-[#7f9183] font-mono text-[10px] uppercase tracking-wider font-semibold">Themes:</span>
-                      {director.thematicFixations.map((t, idx) => (
-                        <span key={t}>
-                          {idx > 0 && <span className="text-[#cfc0bd] mr-2">·</span>}
-                          <span className="text-[#222d2b] font-medium">{t}</span>
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Quote */}
-                    {director.quote && (
-                      <p className="text-xs text-[#586f6b] italic font-serif-cinematic">
-                        "{director.quote}"
-                      </p>
-                    )}
 
                     {director.attachments && director.attachments.length > 0 && (
                       <div className="mt-3">
