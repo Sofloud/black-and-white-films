@@ -48,3 +48,58 @@
   background-image: radial-gradient(rgba(88, 111, 107, 0.05) 1px, transparent 0);
   background-size: 20px 20px;
 }
+
+
+/* Dark charcoal cinema theme */
+@layer base {
+  :root {
+    --color-bg-base: #202020;
+    --color-bg-surface: #292929;
+    --color-bg-elevated: #323232;
+    --color-border-hairline: #414141;
+    --color-border-subtle: #514747;
+    --color-text-primary: #eee9e5;
+    --color-text-secondary: #c1b4af;
+  }
+
+  body {
+    background-color: #202020 !important;
+    color: #eee9e5 !important;
+  }
+
+  h1 {
+    color: #c64b4b !important;
+  }
+
+  input, textarea, select {
+    color-scheme: dark;
+    background-color: #252525;
+    color: #eee9e5;
+    border-color: #514747;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #a89a95;
+  }
+}
+
+/* Translate the existing light-theme utility palette into charcoal surfaces. */
+[class~="bg-[#f7f5f3]"] { background-color: #202020 !important; }
+[class~="bg-[#ffffff]"], [class~="bg-white"] { background-color: #292929 !important; }
+[class~="bg-[#f0ebe7]"], [class~="bg-[#e3deda]"] { background-color: #323232 !important; }
+[class~="bg-white/90"] { background-color: rgb(41 41 41 / 90%) !important; }
+[class~="text-[#222d2b]"] { color: #eee9e5 !important; }
+[class~="text-[#586f6b]"] { color: #c1b4af !important; }
+[class~="text-[#455854]"] { color: #d0c7c2 !important; }
+[class~="text-[#7f9183]"] { color: #b5a29c !important; }
+[class~="text-[#cfc0bd]"] { color: #786b67 !important; }
+[class~="border-[#cfc0bd]"], [class~="border-[#e3deda]"], [class~="border-[#b8b8aa]"] { border-color: #514747 !important; }
+[class~="border-[#586f6b]"] { border-color: #8d3939 !important; }
+[class~="bg-[#586f6b]"] { background-color: #873b3b !important; }
+[class~="hover:bg-[#f7f5f3]"]:hover, [class~="hover:bg-[#e3deda]"]:hover { background-color: #383333 !important; }
+[class~="hover:text-[#222d2b]"]:hover { color: #ffffff !important; }
+[class~="hover:border-[#586f6b]"]:hover { border-color: #c64b4b !important; }
+[class~="text-red-700"] { color: #e07171 !important; }
+
+/* Keep the archive controls and overlays readable on dark surfaces. */
+[class~="bg-black/50"] { background-color: rgb(0 0 0 / 70%) !important; }
