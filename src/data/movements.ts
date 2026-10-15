@@ -24,7 +24,7 @@ export const MOVEMENTS_DATA: MovementInfo[] = [
       symbol: 'DISTORTED SPACE // PSYCHOLOGICAL SHADOW',
       description: 'Painted diagonal shadows, warped architectural planes, impossible perspective, and stark chiaroscuro that externalize inner psychological states.',
       accentColor: '#7C3AED'
-    }
+    },
     attachments: [],
   },
   {
@@ -49,7 +49,7 @@ export const MOVEMENTS_DATA: MovementInfo[] = [
       symbol: 'COLLISION // CONSTRUCTIVIST DIAGONAL',
       description: 'Dialectical shock cutting, metric temporal collisions, and constructivist geometric vectors.',
       accentColor: '#DC2626'
-    }
+    },
     attachments: [],
   },
   {
@@ -74,7 +74,7 @@ export const MOVEMENTS_DATA: MovementInfo[] = [
       symbol: 'CHIAROSCURO // VENETIAN CAGE',
       description: 'Single-source hard lighting, deep inky voids, and diagonal venetian blind shadow bars.',
       accentColor: '#D97706'
-    }
+    },
     attachments: [],
   },
   {
@@ -99,7 +99,7 @@ export const MOVEMENTS_DATA: MovementInfo[] = [
       symbol: 'NATURAL LIGHT // STREET CAMERA',
       description: 'Available daylight, non-professional actors, on-location pavements, and unvarnished realism.',
       accentColor: '#2563EB'
-    }
+    },
     attachments: [],
   },
   {
@@ -124,6 +124,7 @@ export const MOVEMENTS_DATA: MovementInfo[] = [
       symbol: 'JUMP CUT // CAMÉRA-STYLO',
       description: 'Discontinuous rhythm, handheld Éclair camera, Paris Left Bank streets, and cinephilic rebellion.',
       accentColor: '#059669'
-    }
+    },
+    attachments: [],
   }
 ];
