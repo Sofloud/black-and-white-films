@@ -1821,5 +1821,151 @@ export const INITIAL_FILMS: Film[] = [
     posterUrl: 'https://m.media-amazon.com/images/M/MV5BNThmZTZjOTUtMjdlZS00MTM0LWE3NWEtNjgyMWYyYzA0M2FjXkEyXkFqcGc%40._V1_.jpg',
     synopsis: 'An artist living on an isolated island begins to lose his grip on reality as nightmares and memories of sinister figures invade his life.'
   }
+,
+
+  {
+    id: 'lost-highway-1997',
+    title: 'Lost Highway',
+    releaseYear: 1997,
+    director: 'David Lynch',
+    directorId: 'lynch',
+    writer: 'David Lynch, Barry Gifford',
+    cinematographer: 'Peter Deming',
+    cinematographerId: 'peter-deming',
+    genres: ['Neo-Noir', 'Psychological Thriller', 'Surrealism', 'Mystery'],
+    runtimeMinutes: 134,
+    aspectRatio: '2.39:1',
+    colorProcess: 'Color',
+    posterUrl: 'https://www.originalfilmart.co.uk/cdn/shop/products/lost_highway_1997_german_a1_original_film_art_a_1024x1024.jpg?v=1588792013',
+    synopsis: 'A jazz musician receives mysterious videotapes of his home, is convicted of murdering his wife, and inexplicably transforms into another man whose life begins to echo his own.'
+  },
+
+  {
+    id: 'the-magician-1958',
+    title: 'The Magician',
+    originalTitle: 'Ansiktet',
+    releaseYear: 1958,
+    director: 'Ingmar Bergman',
+    directorId: 'bergman',
+    writer: 'Ingmar Bergman',
+    cinematographer: 'Gunnar Fischer',
+    cinematographerId: 'gunnar-fischer',
+    genres: ['Psychological Drama', 'Gothic', 'Mystery'],
+    runtimeMinutes: 107,
+    aspectRatio: '1.33:1',
+    colorProcess: 'Black & White',
+    posterUrl: 'https://pictures.abebooks.com/inventory/30333114865.jpg',
+    synopsis: 'A travelling mesmerist and his troupe arrive in Stockholm, where a skeptical medical adviser subjects their supposed supernatural powers to a humiliating test.'
+  },
+
+  {
+    id: 'autumn-sonata-1978',
+    title: 'Autumn Sonata',
+    originalTitle: 'Höstsonaten',
+    releaseYear: 1978,
+    director: 'Ingmar Bergman',
+    directorId: 'bergman',
+    writer: 'Ingmar Bergman',
+    cinematographer: 'Sven Nykvist',
+    cinematographerId: 'sven-nykvist',
+    genres: ['Psychological Drama', 'Family Drama'],
+    runtimeMinutes: 99,
+    aspectRatio: '1.66:1',
+    colorProcess: 'Color',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BMTBhMWJhNjktNDU3NC00MDNjLWI0MDAtYmM5Y2FjZTJkNGZjXkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg',
+    synopsis: 'A celebrated concert pianist reunites with her daughter after years apart, and a night together brings long-buried resentment, guilt, and emotional wounds to the surface.'
+  },
+
+  {
+    id: 'fanny-and-alexander-1982',
+    title: 'Fanny and Alexander',
+    originalTitle: 'Fanny och Alexander',
+    releaseYear: 1982,
+    director: 'Ingmar Bergman',
+    directorId: 'bergman',
+    writer: 'Ingmar Bergman',
+    cinematographer: 'Sven Nykvist',
+    cinematographerId: 'sven-nykvist',
+    genres: ['Family Drama', 'Period Drama', 'Fantasy'],
+    runtimeMinutes: 188,
+    aspectRatio: '1.66:1',
+    colorProcess: 'Color',
+    posterUrl: 'https://www.originalfilmart.com/cdn/shop/products/fanny_and_alexander_1982_original_film_art_600x.jpg?v=1562541500',
+    synopsis: 'Seen through the eyes of young Alexander and his sister Fanny, the joys and tensions of a theatrical Swedish family are transformed after their father dies and their mother remarries a severe bishop.',
+    historicalSignificance: 'Bergman’s celebrated final theatrical feature exists in a 188-minute theatrical cut and a 312-minute television version.'
+  },
+
+  {
+    id: 'the-virgin-spring-1960',
+    title: 'The Virgin Spring',
+    originalTitle: 'Jungfrukällan',
+    releaseYear: 1960,
+    director: 'Ingmar Bergman',
+    directorId: 'bergman',
+    writer: 'Ulla Isaksson',
+    cinematographer: 'Sven Nykvist',
+    cinematographerId: 'sven-nykvist',
+    genres: ['Historical Drama', 'Tragedy', 'Medieval Drama'],
+    runtimeMinutes: 89,
+    aspectRatio: '1.37:1',
+    colorProcess: 'Black & White',
+    posterUrl: 'https://filmartgallery.com/cdn/shop/products/The-Virgin-Spring-Vintage-Movie-Poster-Original_2f756c24.jpg?v=1771956108&width=1200',
+    synopsis: 'In medieval Sweden, a prosperous farmer’s daughter is murdered on her way to church; the arrival of the killers at her parents’ home sets a devastating chain of vengeance in motion.'
+  },
+
+  {
+    id: 'summer-with-monika-1953',
+    title: 'Summer with Monika',
+    originalTitle: 'Sommaren med Monika',
+    releaseYear: 1953,
+    director: 'Ingmar Bergman',
+    directorId: 'bergman',
+    writer: 'Ingmar Bergman, Per Anders Fogelström',
+    cinematographer: 'Gunnar Fischer',
+    cinematographerId: 'gunnar-fischer',
+    genres: ['Romantic Drama', 'Coming-of-Age'],
+    runtimeMinutes: 97,
+    aspectRatio: '1.37:1',
+    colorProcess: 'Black & White',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BOGJjODNhNzQtMWQzYi00NDFlLTllMDktYzA4MzM0OGFkNzJhXkEyXkFqcGc%40._V1_.jpg',
+    synopsis: 'Two working-class Stockholm teenagers escape their difficult home lives for a carefree summer together on an island, but freedom gives way to the responsibilities and disappointments of adulthood.'
+  },
+
+  {
+    id: 'scenes-from-a-marriage-1973',
+    title: 'Scenes from a Marriage',
+    originalTitle: 'Scener ur ett äktenskap',
+    releaseYear: 1973,
+    director: 'Ingmar Bergman',
+    directorId: 'bergman',
+    writer: 'Ingmar Bergman',
+    cinematographer: 'Sven Nykvist',
+    cinematographerId: 'sven-nykvist',
+    genres: ['Relationship Drama', 'Psychological Drama'],
+    runtimeMinutes: 168,
+    aspectRatio: '1.37:1',
+    colorProcess: 'Color',
+    posterUrl: 'https://cdn.posteritati.com/posters/000/000/057/738/scenes-from-a-marriage-md-web.jpg',
+    synopsis: 'Over years of intimacy, betrayal, separation, and reconciliation, a seemingly successful couple confronts the shifting truths and contradictions of their marriage.',
+    historicalSignificance: 'Originally made as a six-part television miniseries, later edited into a shorter theatrical version.'
+  },
+
+  {
+    id: 'ikiru-1952',
+    title: 'Ikiru',
+    originalTitle: '生きる',
+    releaseYear: 1952,
+    director: 'Akira Kurosawa',
+    directorId: 'kurosawa',
+    writer: 'Akira Kurosawa, Shinobu Hashimoto, Hideo Oguni',
+    cinematographer: 'Asakazu Nakai',
+    cinematographerId: 'asakazu-nakai',
+    genres: ['Drama', 'Humanist', 'Existential'],
+    runtimeMinutes: 143,
+    aspectRatio: '1.37:1',
+    colorProcess: 'Black & White',
+    posterUrl: 'https://www.originalfilmart.com/cdn/shop/products/ikiru_1952_linen_original__film_art_1600x.jpg?v=1618503303',
+    synopsis: 'After learning he has terminal cancer, a long-serving Tokyo bureaucrat searches for meaning and finds purpose in helping local residents build a children’s playground.'
+  }
 
 ];
