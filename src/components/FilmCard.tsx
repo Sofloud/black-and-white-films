@@ -745,6 +745,19 @@ export const FilmCard: React.FC<FilmCardProps> = ({
 
         {/* Synopsis excerpt */}
         <p className="text-xs text-[#455854] line-clamp-2 leading-relaxed">
+          {film.attachments && film.attachments.length > 0 && (
+            <div className="mt-3">
+              <div className="text-[10px] uppercase tracking-widest font-mono text-[#7f9183] mb-1">Attachments</div>
+              <ul className="flex flex-wrap gap-2">
+                {film.attachments.map((url, index) => (
+                  <li key={url + index}>
+                    <a href={url} target="_blank" rel="noreferrer" className="text-xs text-[#586f6b] underline underline-offset-2 hover:text-[#222d2b]">Attachment {index + 1}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {film.synopsis}
         </p>
       </div>
