@@ -16,7 +16,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'Social injustice and systemic class struggle'
     ],
     quote:
-      'To be an artist means never to avert one’s eyes.'
+      'To be an artist means never to avert one’s eyes.',
     attachments: [],
   },
   {
@@ -34,7 +34,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'Mortality and existential isolation'
     ],
     quote:
-      'No art passes our conscience in the way film does, and goes directly to our feelings, deep down into the dark rooms of our souls.'
+      'No art passes our conscience in the way film does, and goes directly to our feelings, deep down into the dark rooms of our souls.',
     attachments: [],
   },
   {
@@ -52,7 +52,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'The transmuting power of cinema and dreams'
     ],
     quote:
-      'Films are 50 percent visual and 50 percent sound. Sometimes sound even overplays the visual.'
+      'Films are 50 percent visual and 50 percent sound. Sometimes sound even overplays the visual.',
     attachments: [],
   },
   {
@@ -70,7 +70,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'Subversion of bourgeois comfort'
     ],
     quote:
-      'There is no terror in the bang, only in the anticipation of it.'
+      'There is no terror in the bang, only in the anticipation of it.',
     attachments: [],
   },
   {
@@ -88,7 +88,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'Dream logic and classical mythological reinvention'
     ],
     quote:
-      'Film will only become an art when its materials are as inexpensive as pencil and paper.'
+      'Film will only become an art when its materials are as inexpensive as pencil and paper.',
     attachments: [],
   },
   {
@@ -106,7 +106,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'Exile and cultural dislocation'
     ],
     quote:
-      'I prefer cinema that suggests rather than explains everything, where framing and silence carry the emotion.'
+      'I prefer cinema that suggests rather than explains everything, where framing and silence carry the emotion.',
     attachments: [],
   },
   {
@@ -124,7 +124,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'The spectacle and illusion of show business'
     ],
     quote:
-      'All art is autobiographical; the pearl is the oyster’s autobiography.'
+      'All art is autobiographical; the pearl is the oyster’s autobiography.',
     attachments: [],
   },
   {
@@ -142,7 +142,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'Youth revolt and anti-imperialist politics'
     ],
     quote:
-      'Cinema is truth twenty-four frames per second, and every cut is a lie.'
+      'Cinema is truth twenty-four frames per second, and every cut is a lie.',
     attachments: [],
   },
   {
@@ -160,7 +160,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'The Antoine Doinel autobiographical cycle'
     ],
     quote:
-      'Film lovers are sick people. Three films a day, three books a week and records of great music would be enough to make me happy.'
+      'Film lovers are sick people. Three films a day, three books a week and records of great music would be enough to make me happy.',
     attachments: [],
   },
   {
@@ -178,6 +178,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'Estranged relationships finding reconciliation'
     ],
     quote:
-      'Every film is about places. The places are there before the story, and the story happens because of them.'
+      'Every film is about places. The places are there before the story, and the story happens because of them.',
+    attachments: [],
   }
 ];
