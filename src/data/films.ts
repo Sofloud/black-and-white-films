@@ -1674,7 +1674,7 @@ export const INITIAL_FILMS: Film[] = [
     runtimeMinutes: 106,
     aspectRatio: '1.78:1',
     colorProcess: 'Color',
-    posterUrl: '',
+    posterUrl: 'https://image.tmdb.org/t/p/original/sSOyk8fWs2sN7YHXsbsp5ZxcGG5.jpg',
     synopsis: 'In an alternate 1960s where Nazi Germany won the Second World War, a German police officer investigates a mysterious death that could expose the regime’s secrets.'
   },
 
