@@ -1116,7 +1116,7 @@ export const INITIAL_FILMS: Film[] = [
     runtimeMinutes: 95,
     aspectRatio: '1.37:1',
     colorProcess: 'Black & White',
-    posterUrl: 'https://m.media-amazon.com/images/M/MV5BNTIwMzliN2ItMzYxYy00MTU3LTk4MDQtNDhkNWRkY2FjNWU4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+    posterUrl: 'https://www.impawards.com/intl/france/1950/imp_orphee.jpg',
     synopsis: 'In post-war Paris, celebrated poet Orpheus becomes obsessed with a mysterious Princess—Death herself—and journeys through liquid mirrors into the Underworld to retrieve his lost love.'
   },
 
