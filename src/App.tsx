@@ -111,6 +111,7 @@ export default function App() {
         activeTab={activeTab}
         onSelectTab={handleSelectTab}
         onOpenAddModal={() => setIsAddModalOpen(true)}
+        totalFilms={overallStats.total}
       />
 
       {/* Progress Ribbon */}
