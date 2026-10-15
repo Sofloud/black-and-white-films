@@ -41,6 +41,7 @@ export interface MovementInfo {
     description: string;
     accentColor: string;
   };
+  attachments?: string[];
 }
 
 export interface DirectorInfo {
@@ -52,6 +53,7 @@ export interface DirectorInfo {
   signatureStyle: string;
   thematicFixations: string[];
   quote: string;
+  attachments?: string[];
 }
 
 export interface CinematographerInfo {
@@ -87,6 +89,7 @@ export interface Film {
   keyScene?: string;
   posterUrl?: string;
   posterArt?: string;
+  attachments?: string[];
   isCustom?: boolean;
 }
 
