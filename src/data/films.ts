@@ -1839,7 +1839,7 @@ export const INITIAL_FILMS: Film[] = [
     runtimeMinutes: 134,
     aspectRatio: '2.39:1',
     colorProcess: 'Color',
-    posterUrl: 'https://prod.janusfilms.com/films/2078',
+    posterUrl: 'https://www.originalfilmart.co.uk/cdn/shop/products/lost_highway_1997_german_a1_original_film_art_a_1024x1024.jpg?v=1588792013',
     synopsis: 'A jazz musician receives mysterious videotapes of his home, is convicted of murdering his wife, and inexplicably transforms into another man whose life begins to echo his own.'
   },
   {
@@ -1856,7 +1856,7 @@ export const INITIAL_FILMS: Film[] = [
     runtimeMinutes: 107,
     aspectRatio: '1.33:1',
     colorProcess: 'Black & White',
-    posterUrl: 'https://www.criterion.com/films/27521-the-magician',
+    posterUrl: 'https://pictures.abebooks.com/inventory/30333114865.jpg',
     synopsis: 'A travelling mesmerist and his troupe arrive in Stockholm, where a skeptical medical adviser subjects their supposed supernatural powers to a humiliating test.'
   },
   {
@@ -1873,7 +1873,7 @@ export const INITIAL_FILMS: Film[] = [
     runtimeMinutes: 99,
     aspectRatio: '1.66:1',
     colorProcess: 'Color',
-    posterUrl: 'https://www.janusfilms.com/film-sets/3',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BMTBhMWJhNjktNDU3NC00MDNjLWI0MDAtYmM5Y2FjZTJkNGZjXkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg',
     synopsis: 'A celebrated concert pianist reunites with her daughter after years apart, and a night together brings long-buried resentment, guilt, and emotional wounds to the surface.'
   },
   {
@@ -1890,7 +1890,7 @@ export const INITIAL_FILMS: Film[] = [
     runtimeMinutes: 188,
     aspectRatio: '1.66:1',
     colorProcess: 'Color',
-    posterUrl: 'https://www.janusfilms.com/film-sets/3',
+    posterUrl: 'https://www.originalfilmart.com/cdn/shop/products/fanny_and_alexander_1982_original_film_art_600x.jpg?v=1562541500',
     synopsis: 'Seen through the eyes of young Alexander and his sister Fanny, the joys and tensions of a theatrical Swedish family are transformed after their father dies and their mother remarries a severe bishop.',
     historicalSignificance: 'Bergman’s celebrated final theatrical feature exists in a 188-minute theatrical cut and a 312-minute television version.'
   },
@@ -1908,7 +1908,7 @@ export const INITIAL_FILMS: Film[] = [
     runtimeMinutes: 89,
     aspectRatio: '1.37:1',
     colorProcess: 'Black & White',
-    posterUrl: 'https://www.criterion.com',
+    posterUrl: 'https://filmartgallery.com/cdn/shop/products/The-Virgin-Spring-Vintage-Movie-Poster-Original_2f756c24.jpg?v=1771956108&width=1200',
     synopsis: 'In medieval Sweden, a prosperous farmer’s daughter is murdered on her way to church; the arrival of the killers at her parents’ home sets a devastating chain of vengeance in motion.'
   },
   {
@@ -1925,7 +1925,7 @@ export const INITIAL_FILMS: Film[] = [
     runtimeMinutes: 97,
     aspectRatio: '1.37:1',
     colorProcess: 'Black & White',
-    posterUrl: 'https://www.janusfilms.com/films/1402',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BOGJjODNhNzQtMWQzYi00NDFlLTllMDktYzA4MzM0OGFkNzJhXkEyXkFqcGc%40._V1_.jpg',
     synopsis: 'Two working-class Stockholm teenagers escape their difficult home lives for a carefree summer together on an island, but freedom gives way to the responsibilities and disappointments of adulthood.'
   },
   {
@@ -1942,7 +1942,7 @@ export const INITIAL_FILMS: Film[] = [
     runtimeMinutes: 168,
     aspectRatio: '1.37:1',
     colorProcess: 'Color',
-    posterUrl: 'https://www.criterion.com',
+    posterUrl: 'https://cdn.posteritati.com/posters/000/000/057/738/scenes-from-a-marriage-md-web.jpg',
     synopsis: 'Over years of intimacy, betrayal, separation, and reconciliation, a seemingly successful couple confronts the shifting truths and contradictions of their marriage.',
     historicalSignificance: 'Originally made as a six-part television miniseries, later edited into a shorter theatrical version.'
   },
@@ -1960,7 +1960,7 @@ export const INITIAL_FILMS: Film[] = [
     runtimeMinutes: 143,
     aspectRatio: '1.37:1',
     colorProcess: 'Black & White',
-    posterUrl: 'https://www.criterion.com',
+    posterUrl: 'https://www.originalfilmart.com/cdn/shop/products/ikiru_1952_linen_original__film_art_1600x.jpg?v=1618503303',
     synopsis: 'After learning he has terminal cancer, a long-serving Tokyo bureaucrat searches for meaning and finds purpose in helping local residents build a children’s playground.'
   }
 
