@@ -7,12 +7,14 @@ interface HeaderProps {
   activeTab: ActiveTab;
   onSelectTab: (tab: ActiveTab) => void;
   onOpenAddModal: () => void;
+  totalFilms: number;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   activeTab,
   onSelectTab,
   onOpenAddModal,
+  totalFilms,
 }) => {
   const handleNavClick = (tab: ActiveTab) => {
     onSelectTab(tab);
@@ -79,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'text-[#586f6b] hover:text-[#222d2b] border-transparent'
             }`}
           >
-            All Films
+            All Films ({totalFilms})
           </button>
         </nav>
 
