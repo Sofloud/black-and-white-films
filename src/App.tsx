@@ -111,10 +111,7 @@ export default function App() {
         activeTab={activeTab}
         onSelectTab={handleSelectTab}
         onOpenAddModal={() => setIsAddModalOpen(true)}
-        onOpenEditModal={() => handleOpenEditArchive()}
-        watchedCount={overallStats.watched}
         totalFilms={overallStats.total}
-        likedCount={overallStats.liked}
       />
 
       {/* Progress Ribbon */}
