@@ -47,7 +47,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
     onUpdateFilmInfo?.(film.id, {
       title: title.trim() || film.title, releaseYear: Number(year) || film.releaseYear, runtimeMinutes: Number(runtime) || film.runtimeMinutes,
       director: director.trim() || film.director, writer: writer.trim() || film.writer, cinematographer: cinematographer.trim() || film.cinematographer,
-      movementName: movement.trim() || undefined, genres: genres.split(',').map(g => g.trim()).filter(Boolean), synopsis: synopsis.trim() || film.synopsis,
+      movementName: movement.trim() || undefined, genres: genres.split(',').map(g => g.trim()).filter(Boolean),
       link: link.trim() || undefined
     });
     setEditing(false);
@@ -69,7 +69,6 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
           <label className="text-[10px] font-mono uppercase">Genres<input value={genres} onChange={e => setGenres(e.target.value)} className="w-full editor-input" /></label>
           <label className="text-[10px] font-mono uppercase sm:col-span-2">Film link<input type="url" value={link} onChange={e => setLink(e.target.value)} placeholder="https://…" className="w-full editor-input" /></label>
         </div>
-        <label className="block text-[10px] font-mono uppercase">Synopsis<textarea rows={4} value={synopsis} onChange={e => setSynopsis(e.target.value)} className="w-full editor-input" /></label>
         <div className="flex justify-between pt-2 border-t border-[#e3deda]">
           <div>{isFilmEdited && onResetFilmInfo && <button type="button" onClick={reset} className="text-xs text-amber-800 underline">Revert original</button>}</div>
           <div className="flex gap-2"><button type="button" onClick={() => setEditing(false)} className="px-3 py-1 border rounded text-xs">Cancel</button><button className="px-3 py-1 bg-[#586f6b] text-white rounded text-xs font-semibold">Save</button></div>
@@ -103,7 +102,6 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
 
       {expanded && <div className="border-t border-[#e3deda] p-4 space-y-3 text-xs" onClick={e => e.stopPropagation()}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono"><div><span className="text-[#7f9183]">Director</span><div className="font-semibold">{film.director}</div></div><div><span className="text-[#7f9183]">Writer</span><div>{film.writer}</div></div><div><span className="text-[#7f9183]">Cinematographer</span><div>{film.cinematographer}</div></div><div><span className="text-[#7f9183]">Genre</span><div>{film.genres.join(' · ')}</div></div>{film.movementName && <div><span className="text-[#7f9183]">Movement</span><div>{film.movementName}</div></div>}</div>
-        <p className="leading-relaxed text-[#455854]">{film.synopsis}</p>
         {film.link && <a href={film.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-[#586f6b] underline"><ExternalLink className="w-3 h-3" />Film link</a>}
         <div className="flex gap-2 pt-2"><button type="button" onClick={startEdit} className="inline-flex items-center gap-1 px-2.5 py-1 border rounded text-xs"><Pencil className="w-3 h-3" />Edit</button></div>
       </div>}
