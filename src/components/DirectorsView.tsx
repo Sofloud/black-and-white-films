@@ -416,6 +416,19 @@ export const DirectorsView: React.FC<DirectorsViewProps> = ({
                       />
                     </div>
 
+                    <div>
+                      <label className="block text-[10px] font-mono uppercase text-[#7f9183] mb-0.5 font-semibold">
+                        Attachments (one URL per line)
+                      </label>
+                      <textarea
+                        rows={3}
+                        value={dirAttachmentsText}
+                        onChange={(e) => setDirAttachmentsText(e.target.value)}
+                        placeholder={"https://example.com/director-interview\\nhttps://example.com/biography"}
+                        className="w-full bg-[#ffffff] border border-[#cfc0bd] rounded px-2.5 py-1 text-xs text-[#222d2b] focus:border-[#586f6b] focus:outline-none"
+                      />
+                    </div>
+
                     <div className="flex items-center justify-between pt-2 border-t border-[#cfc0bd] font-mono text-xs">
                       {directorEdited && onResetDirectorInfo ? (
                         <button
