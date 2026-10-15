@@ -17,6 +17,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
     ],
     quote:
       'To be an artist means never to avert one’s eyes.'
+    attachments: [],
   },
   {
     id: 'bergman',
@@ -34,6 +35,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
     ],
     quote:
       'No art passes our conscience in the way film does, and goes directly to our feelings, deep down into the dark rooms of our souls.'
+    attachments: [],
   },
   {
     id: 'lynch',
@@ -51,6 +53,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
     ],
     quote:
       'Films are 50 percent visual and 50 percent sound. Sometimes sound even overplays the visual.'
+    attachments: [],
   },
   {
     id: 'hitchcock',
@@ -68,6 +71,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
     ],
     quote:
       'There is no terror in the bang, only in the anticipation of it.'
+    attachments: [],
   },
   {
     id: 'cocteau',
@@ -85,6 +89,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
     ],
     quote:
       'Film will only become an art when its materials are as inexpensive as pencil and paper.'
+    attachments: [],
   },
   {
     id: 'pawlikowski',
@@ -102,6 +107,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
     ],
     quote:
       'I prefer cinema that suggests rather than explains everything, where framing and silence carry the emotion.'
+    attachments: [],
   },
   {
     id: 'fellini',
@@ -119,6 +125,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
     ],
     quote:
       'All art is autobiographical; the pearl is the oyster’s autobiography.'
+    attachments: [],
   },
   {
     id: 'godard',
@@ -136,6 +143,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
     ],
     quote:
       'Cinema is truth twenty-four frames per second, and every cut is a lie.'
+    attachments: [],
   },
   {
     id: 'truffaut',
@@ -153,6 +161,7 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
     ],
     quote:
       'Film lovers are sick people. Three films a day, three books a week and records of great music would be enough to make me happy.'
+    attachments: [],
   },
   {
     id: 'wenders',
