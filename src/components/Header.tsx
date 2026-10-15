@@ -50,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleNavClick('movements')}
             className={`whitespace-nowrap shrink-0 transition-colors pb-1 border-b-2 cursor-pointer ${
               activeTab === 'movements'
-                ? 'text-[#222d2b] border-[#586f6b] font-semibold'
+                ? 'text-[#c64b4b] border-[#c64b4b] font-semibold'
                 : 'text-[#586f6b] hover:text-[#222d2b] border-transparent'
             }`}
           >
@@ -61,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleNavClick('directors')}
             className={`whitespace-nowrap shrink-0 transition-colors pb-1 border-b-2 cursor-pointer ${
               activeTab === 'directors'
-                ? 'text-[#222d2b] border-[#586f6b] font-semibold'
+                ? 'text-[#c64b4b] border-[#c64b4b] font-semibold'
                 : 'text-[#586f6b] hover:text-[#222d2b] border-transparent'
             }`}
           >
@@ -72,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleNavClick('readings')}
             className={`whitespace-nowrap shrink-0 transition-colors pb-1 border-b-2 cursor-pointer ${
               activeTab === 'readings'
-                ? 'text-[#222d2b] border-[#586f6b] font-semibold'
+                ? 'text-[#c64b4b] border-[#c64b4b] font-semibold'
                 : 'text-[#586f6b] hover:text-[#222d2b] border-transparent'
             }`}
           >
@@ -83,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleNavClick('catalog')}
             className={`whitespace-nowrap shrink-0 transition-colors pb-1 border-b-2 cursor-pointer ${
               activeTab === 'catalog'
-                ? 'text-[#222d2b] border-[#586f6b] font-semibold'
+                ? 'text-[#c64b4b] border-[#c64b4b] font-semibold'
                 : 'text-[#586f6b] hover:text-[#222d2b] border-transparent'
             }`}
           >
@@ -133,7 +133,7 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           onClick={() => handleNavClick('movements')}
           className={`px-2 py-1 whitespace-nowrap cursor-pointer ${
-            activeTab === 'movements' ? 'text-[#222d2b] font-bold border-b-2 border-[#586f6b]' : 'text-[#586f6b]'
+            activeTab === 'movements' ? 'text-[#c64b4b] font-bold border-b-2 border-[#c64b4b]' : 'text-[#586f6b]'
           }`}
         >
           Film Movements
@@ -141,7 +141,7 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           onClick={() => handleNavClick('directors')}
           className={`px-2 py-1 whitespace-nowrap cursor-pointer ${
-            activeTab === 'directors' ? 'text-[#222d2b] font-bold border-b-2 border-[#586f6b]' : 'text-[#586f6b]'
+            activeTab === 'directors' ? 'text-[#c64b4b] font-bold border-b-2 border-[#c64b4b]' : 'text-[#586f6b]'
           }`}
         >
           Selected Directors
@@ -149,7 +149,7 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           onClick={() => handleNavClick('readings')}
           className={`px-2 py-1 whitespace-nowrap cursor-pointer ${
-            activeTab === 'readings' ? 'text-[#222d2b] font-bold border-b-2 border-[#586f6b]' : 'text-[#586f6b]'
+            activeTab === 'readings' ? 'text-[#c64b4b] font-bold border-b-2 border-[#c64b4b]' : 'text-[#586f6b]'
           }`}
         >
           Reading
@@ -157,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           onClick={() => handleNavClick('catalog')}
           className={`px-2 py-1 whitespace-nowrap cursor-pointer ${
-            activeTab === 'catalog' ? 'text-[#222d2b] font-bold border-b-2 border-[#586f6b]' : 'text-[#586f6b]'
+            activeTab === 'catalog' ? 'text-[#c64b4b] font-bold border-b-2 border-[#c64b4b]' : 'text-[#586f6b]'
           }`}
         >
           All Films
