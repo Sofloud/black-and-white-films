@@ -633,9 +633,10 @@ export const FilmCard: React.FC<FilmCardProps> = ({
                     onClick={handleStartInlineEdit}
                     title="Edit this film on the spot"
                     aria-label="Edit this film on the spot"
-                    className="p-1 rounded text-[#7f9183] hover:text-[#222d2b] hover:bg-[#f7f5f3] border border-transparent hover:border-[#cfc0bd] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1 px-2 py-1 rounded text-[#586f6b] hover:text-[#222d2b] hover:bg-[#f7f5f3] border border-[#cfc0bd] hover:border-[#7f9183] transition-colors cursor-pointer text-[10px] font-mono"
                   >
                     <Pencil className="w-3.5 h-3.5" />
+                    <span>Edit</span>
                   </button>
 
                   {/* Delete Film Button */}
