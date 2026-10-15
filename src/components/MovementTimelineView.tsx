@@ -455,7 +455,7 @@ export const MovementTimelineView: React.FC<MovementTimelineViewProps> = ({
               <div className="mt-8">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-serif-cinematic text-lg text-[#222d2b] font-semibold">
-                    Films in Movement ({displayedFilms.length})
+                    Films in Movement
                   </h3>
                 </div>
 
