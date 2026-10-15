@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Film, UserFilmState, ReactionType, MovementInfo } from '../types/film';
 import { MOVEMENTS_DATA } from '../data/movements';
 import { FilmCard } from './FilmCard';
-import { Pencil, Check, X, RotateCcw, Star } from 'lucide-react';
+import { Pencil, Check, X, RotateCcw, Star, ExternalLink } from 'lucide-react';
 
 interface MovementTimelineViewProps {
   films: Film[];
