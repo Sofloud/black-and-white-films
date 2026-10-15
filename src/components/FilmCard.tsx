@@ -31,14 +31,14 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
   const [movement, setMovement] = useState(film.movementName || '');
   const [genres, setGenres] = useState(film.genres.join(', '));
   const [synopsis, setSynopsis] = useState(film.synopsis);
-  const [link, setLink] = useState(film.link || '');
+  const [attachmentsText, setAttachmentsText] = useState((film.attachments || (film.link ? [film.link] : [])).join('\n'));
   const isWatched = userState.isWatched;
   const isLiked = userState.reaction === 'like';
 
   useEffect(() => {
     setTitle(film.title); setYear(film.releaseYear); setRuntime(film.runtimeMinutes); setDirector(film.director);
     setWriter(film.writer); setCinematographer(film.cinematographer); setMovement(film.movementName || '');
-    setGenres(film.genres.join(', ')); setSynopsis(film.synopsis); setLink(film.link || '');
+    setGenres(film.genres.join(', ')); setSynopsis(film.synopsis); setAttachmentsText((film.attachments || (film.link ? [film.link] : [])).join('\n'));
   }, [film]);
 
   const startEdit = () => { setExpanded(true); setEditing(true); };
@@ -48,7 +48,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
       title: title.trim() || film.title, releaseYear: Number(year) || film.releaseYear, runtimeMinutes: Number(runtime) || film.runtimeMinutes,
       director: director.trim() || film.director, writer: writer.trim() || film.writer, cinematographer: cinematographer.trim() || film.cinematographer,
       movementName: movement.trim() || undefined, genres: genres.split(',').map(g => g.trim()).filter(Boolean), synopsis: synopsis.trim() || film.synopsis,
-      link: link.trim() || undefined
+      attachments: attachmentsText.split('\n').map(url => url.trim()).filter(Boolean), link: undefined
     });
     setEditing(false);
   };
@@ -68,7 +68,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
           <label className="text-[10px] font-mono uppercase">Movement<input value={movement} onChange={e => setMovement(e.target.value)} className="w-full editor-input" /></label>
           <label className="text-[10px] font-mono uppercase">Genres<input value={genres} onChange={e => setGenres(e.target.value)} className="w-full editor-input" /></label>
           <label className="text-[10px] font-mono uppercase sm:col-span-2">Synopsis<textarea value={synopsis} onChange={e => setSynopsis(e.target.value)} className="w-full editor-input" rows={3} /></label>
-          <label className="text-[10px] font-mono uppercase sm:col-span-2">Film link<input type="url" value={link} onChange={e => setLink(e.target.value)} placeholder="https://…" className="w-full editor-input" /></label>
+          <label className="text-[10px] font-mono uppercase sm:col-span-2">Attachments (one URL per line)<textarea rows={3} value={attachmentsText} onChange={e => setAttachmentsText(e.target.value)} placeholder={"https://example.com/film-notes\\nhttps://example.com/interview"} className="w-full editor-input" /></label>
         </div>
         <div className="flex justify-between pt-2 border-t border-[#e3deda]">
           <div>{isFilmEdited && onResetFilmInfo && <button type="button" onClick={reset} className="text-xs text-amber-800 underline">Revert original</button>}</div>
@@ -130,7 +130,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, userState, onToggleWat
               {film.movementName && <div><span className="text-[#7f9183]">Movement</span><div>{film.movementName}</div></div>}
             </div>
             <div><h3 className="text-[10px] font-mono uppercase tracking-wider text-[#7f9183]">Synopsis</h3><p className="mt-1 leading-relaxed text-[#222d2b]">{film.synopsis}</p></div>
-            {film.link && <a href={film.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-[#586f6b] underline"><ExternalLink className="w-3 h-3" />Film link</a>}
+            {((film.attachments && film.attachments.length > 0) ? film.attachments : film.link ? [film.link] : []).length > 0 && <div><h3 className="text-[10px] font-mono uppercase tracking-wider text-[#7f9183] mb-2">Attachments</h3><div className="flex flex-wrap gap-3">{((film.attachments && film.attachments.length > 0) ? film.attachments : film.link ? [film.link] : []).map((url, index) => <a key={url + index} href={url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-[#586f6b] underline"><ExternalLink className="w-3 h-3" />Attachment {index + 1}</a>)}</div></div>}
           </div>
         </section>
       </div>}
