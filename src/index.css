@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-display: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+    /* Palette: https://coolors.co/ddd5d0-cfc0bd-b8b8aa-7f9183-586f6b */
+    --color-bone: #ddd5d0;
+    --color-taupe: #cfc0bd;
+    --color-linen: #b8b8aa;
+    --color-sage: #7f9183;
+    --color-pine: #586f6b;
+
+    /* Light Theme Surfaces & Text */
+    --color-bg-base: #f7f5f3;
+    --color-bg-surface: #ffffff;
+    --color-bg-elevated: #f0ebe7;
+    --color-border-hairline: #e3deda;
+    --color-border-subtle: #cfc0bd;
+    --color-text-primary: #222d2b;
+    --color-text-secondary: #586f6b;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #f7f5f3;
+    color: #222d2b;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.font-serif-cinematic {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-display-cinematic {
+  font-family: 'Cinzel', Georgia, serif;
+}
+
+/* Subtle archival paper grain */
+.film-grain {
+  background-color: #f7f5f3;
+  background-image: radial-gradient(rgba(88, 111, 107, 0.05) 1px, transparent 0);
+  background-size: 20px 20px;
+}

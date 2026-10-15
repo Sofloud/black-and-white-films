@@ -1,0 +1,8 @@
+{
+  "name": "Film Studies",
+  "description": "Curatorial film studies platform categorised by movements and directors with watch-tracking and reading list.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
