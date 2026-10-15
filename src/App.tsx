@@ -6,18 +6,30 @@ import { DirectorsView } from './components/DirectorsView';
 import { ReadingsView } from './components/ReadingsView';
 import { CatalogView } from './components/CatalogView';
 import { AddFilmModal } from './components/AddFilmModal';
+import { ArchiveEditModal, EditTab } from './components/ArchiveEditModal';
 import { StudyStatsRibbon } from './components/StudyStatsRibbon';
 import { Film, ReactionType } from './types/film';
 
 export default function App() {
   const {
     allFilms,
+    allDirectors,
+    allMovements,
     userStates,
     toggleWatched,
     setReaction,
+    updateFilmInfo,
+    resetFilmInfo,
+    isFilmEdited,
     updateFilmGenres,
     resetFilmGenres,
     isFilmGenreEdited,
+    updateDirectorInfo,
+    resetDirectorInfo,
+    isDirectorEdited,
+    updateMovementInfo,
+    resetMovementInfo,
+    isMovementEdited,
     deleteFilm,
     addCustomFilm,
     getMovementStats,
@@ -27,10 +39,54 @@ export default function App() {
 
   const [activeTab, setActiveTab] = useState<ActiveTab>('movements');
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isEditArchiveOpen, setIsEditArchiveOpen] = useState(false);
+  const [editArchiveTarget, setEditArchiveTarget] = useState<{
+    tab: EditTab;
+    id?: string;
+  }>({ tab: 'films' });
+
+  const [displayMode, setDisplayMode] = useState<'detailed' | 'posters'>(() => {
+    try {
+      const stored = localStorage.getItem('cinema_display_mode');
+      if (stored === 'posters' || stored === 'detailed') return stored;
+    } catch {
+      // ignore
+    }
+    return 'detailed';
+  });
+
+  const handleSetDisplayMode = (mode: 'detailed' | 'posters') => {
+    setDisplayMode(mode);
+    try {
+      localStorage.setItem('cinema_display_mode', mode);
+    } catch {
+      // ignore
+    }
+  };
 
   const handleSelectTab = (tab: ActiveTab) => {
     setActiveTab(tab);
     window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const handleOpenEditArchive = (target?: { type: 'film' | 'director' | 'movement'; id: string }) => {
+    if (target) {
+      const tabMap: Record<string, EditTab> = {
+        film: 'films',
+        director: 'directors',
+        movement: 'movements'
+      };
+      setEditArchiveTarget({ tab: tabMap[target.type] || 'films', id: target.id });
+    } else {
+      if (activeTab === 'directors') {
+        setEditArchiveTarget({ tab: 'directors' });
+      } else if (activeTab === 'movements') {
+        setEditArchiveTarget({ tab: 'movements' });
+      } else {
+        setEditArchiveTarget({ tab: 'films' });
+      }
+    }
+    setIsEditArchiveOpen(true);
   };
 
   const handleAddFilm = (
@@ -55,6 +111,7 @@ export default function App() {
         activeTab={activeTab}
         onSelectTab={handleSelectTab}
         onOpenAddModal={() => setIsAddModalOpen(true)}
+        onOpenEditModal={() => handleOpenEditArchive()}
         watchedCount={overallStats.watched}
         totalFilms={overallStats.total}
         likedCount={overallStats.liked}
@@ -71,28 +128,48 @@ export default function App() {
         {activeTab === 'movements' && (
           <MovementTimelineView
             films={allFilms}
+            movements={allMovements}
             userStates={userStates}
             onToggleWatched={toggleWatched}
             onSetReaction={setReaction}
+            onUpdateFilmInfo={updateFilmInfo}
+            onResetFilmInfo={resetFilmInfo}
+            isFilmEdited={isFilmEdited}
+            onUpdateMovementInfo={updateMovementInfo}
+            onResetMovementInfo={resetMovementInfo}
+            isMovementEdited={isMovementEdited}
             onUpdateGenres={updateFilmGenres}
             onResetGenres={resetFilmGenres}
             isFilmGenreEdited={isFilmGenreEdited}
             onDeleteFilm={deleteFilm}
             getMovementStats={getMovementStats}
+            onOpenEditArchive={handleOpenEditArchive}
+            displayMode={displayMode}
+            onSetDisplayMode={handleSetDisplayMode}
           />
         )}
 
         {activeTab === 'directors' && (
           <DirectorsView
             films={allFilms}
+            directors={allDirectors}
             userStates={userStates}
             onToggleWatched={toggleWatched}
             onSetReaction={setReaction}
+            onUpdateFilmInfo={updateFilmInfo}
+            onResetFilmInfo={resetFilmInfo}
+            isFilmEdited={isFilmEdited}
+            onUpdateDirectorInfo={updateDirectorInfo}
+            onResetDirectorInfo={resetDirectorInfo}
+            isDirectorEdited={isDirectorEdited}
             onUpdateGenres={updateFilmGenres}
             onResetGenres={resetFilmGenres}
             isFilmGenreEdited={isFilmGenreEdited}
             onDeleteFilm={deleteFilm}
             getDirectorStats={getDirectorStats}
+            onOpenEditArchive={handleOpenEditArchive}
+            displayMode={displayMode}
+            onSetDisplayMode={handleSetDisplayMode}
           />
         )}
 
@@ -106,10 +183,16 @@ export default function App() {
             userStates={userStates}
             onToggleWatched={toggleWatched}
             onSetReaction={setReaction}
+            onUpdateFilmInfo={updateFilmInfo}
+            onResetFilmInfo={resetFilmInfo}
+            isFilmEdited={isFilmEdited}
             onUpdateGenres={updateFilmGenres}
             onResetGenres={resetFilmGenres}
             isFilmGenreEdited={isFilmGenreEdited}
             onDeleteFilm={deleteFilm}
+            onOpenEditArchive={handleOpenEditArchive}
+            displayMode={displayMode}
+            onSetDisplayMode={handleSetDisplayMode}
           />
         )}
       </main>
@@ -117,10 +200,6 @@ export default function App() {
       {/* Institutional Quiet Light Footer */}
       <footer className="border-t border-[#cfc0bd] bg-[#ffffff] mt-16 text-xs text-[#586f6b] py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono">
-          <div className="flex items-center gap-2">
-            <span className="font-display-cinematic text-[#222d2b] text-sm font-semibold">Film Studies</span>
-          </div>
-
           <div className="text-[#586f6b] flex items-center gap-4">
             <span>Progress: {overallStats.watched} of {overallStats.total} viewed ({overallStats.percentage}%)</span>
             <span>·</span>
@@ -134,6 +213,26 @@ export default function App() {
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
         onAddFilm={handleAddFilm}
+      />
+
+      {/* Universal Archive & Descriptions Editor Modal */}
+      <ArchiveEditModal
+        isOpen={isEditArchiveOpen}
+        onClose={() => setIsEditArchiveOpen(false)}
+        initialTab={editArchiveTarget.tab}
+        initialTargetId={editArchiveTarget.id}
+        films={allFilms}
+        directors={allDirectors}
+        movements={allMovements}
+        onUpdateFilm={updateFilmInfo}
+        onResetFilm={resetFilmInfo}
+        isFilmEdited={isFilmEdited}
+        onUpdateDirector={updateDirectorInfo}
+        onResetDirector={resetDirectorInfo}
+        isDirectorEdited={isDirectorEdited}
+        onUpdateMovement={updateMovementInfo}
+        onResetMovement={resetMovementInfo}
+        isMovementEdited={isMovementEdited}
       />
 
     </div>

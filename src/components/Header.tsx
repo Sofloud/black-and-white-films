@@ -1,5 +1,5 @@
 import React from 'react';
-import { Film as FilmIcon, Plus, Eye } from 'lucide-react';
+import { Film as FilmIcon, Plus, Eye, Pencil } from 'lucide-react';
 
 export type ActiveTab = 'movements' | 'directors' | 'readings' | 'catalog';
 
@@ -7,6 +7,7 @@ interface HeaderProps {
   activeTab: ActiveTab;
   onSelectTab: (tab: ActiveTab) => void;
   onOpenAddModal: () => void;
+  onOpenEditModal: () => void;
   watchedCount: number;
   totalFilms: number;
   likedCount: number;
@@ -16,6 +17,7 @@ export const Header: React.FC<HeaderProps> = ({
   activeTab,
   onSelectTab,
   onOpenAddModal,
+  onOpenEditModal,
   watchedCount,
   totalFilms,
   likedCount
@@ -29,18 +31,16 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="border-b border-[#cfc0bd] bg-[#ffffff]/95 backdrop-blur-md sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-8">
         
-        {/* Zone 1: Wordmark */}
+        {/* Zone 1: Icon Mark */}
         <div className="flex items-center gap-3 shrink-0">
           <button
             onClick={() => handleNavClick('movements')}
-            className="flex items-center gap-2.5 text-left group focus:outline-none cursor-pointer"
+            className="flex items-center text-left group focus:outline-none cursor-pointer"
+            aria-label="Home"
           >
             <div className="w-9 h-9 rounded bg-[#586f6b]/10 border border-[#7f9183]/50 flex items-center justify-center text-[#586f6b] group-hover:border-[#586f6b] transition-colors">
               <FilmIcon className="w-5 h-5 text-[#586f6b]" />
             </div>
-            <span className="font-display-cinematic text-xl tracking-wider font-semibold text-[#222d2b] group-hover:text-[#586f6b] transition-colors whitespace-nowrap block">
-              Film Studies
-            </span>
           </button>
         </div>
 
@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'text-[#586f6b] hover:text-[#222d2b] border-transparent'
             }`}
           >
-            Directors
+            Selected Directors
           </button>
           
           <button
@@ -91,9 +91,9 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </nav>
 
-        {/* Zone 3: Watched count, emoji heart count, and Add Film primary button */}
-        <div className="flex items-center gap-4 shrink-0">
-          <div className="hidden lg:flex items-center gap-3 text-xs text-[#586f6b] font-mono">
+        {/* Zone 3: Watched count, emoji heart count, Edit button, and Add Film primary button */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-3 text-xs text-[#586f6b] font-mono mr-1">
             <span className="flex items-center gap-1.5 text-[#222d2b]">
               <Eye className="w-3.5 h-3.5 text-[#7f9183]" />
               <strong className="text-[#222d2b] font-semibold">{watchedCount}</strong> / {totalFilms} watched
@@ -105,7 +105,19 @@ export const Header: React.FC<HeaderProps> = ({
             </span>
           </div>
 
+          {/* Single Edit Button in the Top Right Corner - just pen sign like in film editing */}
           <button
+            type="button"
+            onClick={onOpenEditModal}
+            className="p-2 sm:p-2.5 text-[#586f6b] hover:text-[#222d2b] bg-[#ffffff] hover:bg-[#f7f5f3] active:bg-[#e3deda] border border-[#cfc0bd] hover:border-[#586f6b] rounded transition-colors shadow-xs cursor-pointer flex items-center justify-center"
+            title="Edit info"
+            aria-label="Edit info"
+          >
+            <Pencil className="w-4 h-4" />
+          </button>
+
+          <button
+            type="button"
             onClick={onOpenAddModal}
             className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold tracking-wide text-[#ffffff] bg-[#586f6b] hover:bg-[#485c58] active:bg-[#3d4f4b] rounded transition-colors whitespace-nowrap shadow-sm cursor-pointer"
           >
@@ -132,7 +144,7 @@ export const Header: React.FC<HeaderProps> = ({
             activeTab === 'directors' ? 'text-[#222d2b] font-bold border-b-2 border-[#586f6b]' : 'text-[#586f6b]'
           }`}
         >
-          Directors
+          Selected Directors
         </button>
         <button
           onClick={() => handleNavClick('readings')}

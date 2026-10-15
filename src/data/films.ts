@@ -1088,6 +1088,7 @@ export const INITIAL_FILMS: Film[] = [
     originalTitle: 'La Belle et la Bête',
     releaseYear: 1946,
     director: 'Jean Cocteau',
+    directorId: 'cocteau',
     writer: 'Jean Cocteau',
     cinematographer: 'Henri Alekan',
     genres: ['Fantasy', 'Romance', 'Surrealism'],
@@ -1098,6 +1099,25 @@ export const INITIAL_FILMS: Film[] = [
     colorProcess: 'Black & White',
     posterUrl: 'https://m.media-amazon.com/images/M/MV5BZWJjZDNjMTMtYzJlYy00MDFhLWE0ZWQtYmNkYTQ0NmQzNDU4XkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg',
     synopsis: 'A young woman agrees to live with a mysterious beast in his enchanted castle and gradually discovers the humanity behind his monstrous appearance.'
+  },
+
+  {
+    id: 'orpheus-1950',
+    title: 'Orpheus',
+    originalTitle: 'Orphée',
+    releaseYear: 1950,
+    director: 'Jean Cocteau',
+    directorId: 'cocteau',
+    writer: 'Jean Cocteau',
+    cinematographer: 'Nicolas Hayer',
+    genres: ['Drama', 'Fantasy', 'Surrealism', 'Romance'],
+    movementId: 'surrealism',
+    movementName: 'Surrealism',
+    runtimeMinutes: 95,
+    aspectRatio: '1.37:1',
+    colorProcess: 'Black & White',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BNTIwMzliN2ItMzYxYy00MTU3LTk4MDQtNDhkNWRkY2FjNWU4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+    synopsis: 'In post-war Paris, celebrated poet Orpheus becomes obsessed with a mysterious Princess—Death herself—and journeys through liquid mirrors into the Underworld to retrieve his lost love.'
   },
 
   {

@@ -10,10 +10,16 @@ interface CatalogViewProps {
   userStates: Record<string, UserFilmState>;
   onToggleWatched: (filmId: string) => void;
   onSetReaction: (filmId: string, reaction: ReactionType) => void;
+  onUpdateFilmInfo?: (filmId: string, updates: Partial<Film>) => void;
+  onResetFilmInfo?: (filmId: string) => void;
+  isFilmEdited?: (filmId: string) => boolean;
+  onDeleteFilm?: (filmId: string) => void;
+  onOpenEditArchive?: (target?: { type: 'film' | 'director' | 'movement'; id: string }) => void;
+  displayMode?: 'detailed' | 'posters';
+  onSetDisplayMode?: (mode: 'detailed' | 'posters') => void;
   onUpdateGenres?: (filmId: string, genres: string[]) => void;
   onResetGenres?: (filmId: string) => void;
   isFilmGenreEdited?: (filmId: string) => boolean;
-  onDeleteFilm?: (filmId: string) => void;
 }
 
 export const CatalogView: React.FC<CatalogViewProps> = ({
@@ -21,11 +27,41 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   userStates,
   onToggleWatched,
   onSetReaction,
+  onUpdateFilmInfo,
+  onResetFilmInfo,
+  isFilmEdited,
+  onDeleteFilm,
+  onOpenEditArchive,
+  displayMode: propDisplayMode,
+  onSetDisplayMode,
   onUpdateGenres,
   onResetGenres,
-  isFilmGenreEdited,
-  onDeleteFilm
+  isFilmGenreEdited
 }) => {
+  const [internalDisplayMode, setInternalDisplayMode] = useState<'detailed' | 'posters'>(() => {
+    try {
+      const stored = localStorage.getItem('cinema_display_mode');
+      if (stored === 'posters' || stored === 'detailed') return stored;
+    } catch {
+      // ignore
+    }
+    return 'detailed';
+  });
+
+  const displayMode = propDisplayMode ?? internalDisplayMode;
+
+  const handleSetDisplayMode = (mode: 'detailed' | 'posters') => {
+    setInternalDisplayMode(mode);
+    try {
+      localStorage.setItem('cinema_display_mode', mode);
+    } catch {
+      // ignore
+    }
+    if (onSetDisplayMode) {
+      onSetDisplayMode(mode);
+    }
+  };
+
   const [searchQuery, setSearchQuery] = useState('');
   const [watchFilter, setWatchFilter] = useState<'all' | 'watched' | 'unwatched'>('all');
   const [heartFilter, setHeartFilter] = useState<'all' | 'hearted'>('all');
@@ -278,10 +314,53 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
 
       </div>
 
-      {/* Results Count & Grid */}
+      {/* Results Count & Grid with Sign-Only Layout Filter */}
       <div>
-        <div className="flex items-center justify-between mb-6 text-xs text-[#586f6b] font-mono">
+        <div className="flex items-center justify-between mb-6 text-xs text-[#586f6b] font-mono gap-3">
           <span>Displaying {filteredFilms.length} matching films</span>
+
+          {/* Sign-Only Filter: Posters and Information VS Just Posters (Signs only, no words) */}
+          <div className="flex items-center gap-1 bg-[#ffffff] p-1 rounded-lg border border-[#cfc0bd] shadow-xs">
+            {/* Sign for Posters & Information */}
+            <button
+              type="button"
+              onClick={() => handleSetDisplayMode('detailed')}
+              title="Posters and information"
+              aria-label="Posters and information"
+              className={`p-1.5 rounded transition-all cursor-pointer ${
+                displayMode === 'detailed'
+                  ? 'bg-[#586f6b] text-[#ffffff] shadow-xs'
+                  : 'text-[#586f6b] hover:text-[#222d2b] hover:bg-[#f7f5f3]'
+              }`}
+            >
+              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2.5" y="3" width="5.5" height="14" rx="1" />
+                <line x1="11" y1="6" x2="17.5" y2="6" />
+                <line x1="11" y1="10" x2="17.5" y2="10" />
+                <line x1="11" y1="14" x2="15" y2="14" />
+              </svg>
+            </button>
+
+            {/* Sign for Just Posters */}
+            <button
+              type="button"
+              onClick={() => handleSetDisplayMode('posters')}
+              title="Just posters"
+              aria-label="Just posters"
+              className={`p-1.5 rounded transition-all cursor-pointer ${
+                displayMode === 'posters'
+                  ? 'bg-[#586f6b] text-[#ffffff] shadow-xs'
+                  : 'text-[#586f6b] hover:text-[#222d2b] hover:bg-[#f7f5f3]'
+              }`}
+            >
+              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2.5" y="3" width="6.5" height="9.5" rx="1" />
+                <rect x="11" y="3" width="6.5" height="9.5" rx="1" />
+                <rect x="2.5" y="14" width="6.5" height="3" rx="0.5" />
+                <rect x="11" y="14" width="6.5" height="3" rx="0.5" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {filteredFilms.length === 0 ? (
@@ -300,7 +379,13 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            className={
+              displayMode === 'detailed'
+                ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
+                : 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5'
+            }
+          >
             {filteredFilms.map((film) => (
               <FilmCard
                 key={film.id}
@@ -308,10 +393,12 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
                 userState={userStates[film.id] || { isWatched: false, reaction: 'none' }}
                 onToggleWatched={onToggleWatched}
                 onSetReaction={onSetReaction}
-                onUpdateGenres={onUpdateGenres}
-                onResetGenres={onResetGenres}
-                isGenreEdited={isFilmGenreEdited ? isFilmGenreEdited(film.id) : false}
+                onUpdateFilmInfo={onUpdateFilmInfo}
+                onResetFilmInfo={onResetFilmInfo}
+                isFilmEdited={isFilmEdited ? isFilmEdited(film.id) : false}
                 onDeleteFilm={onDeleteFilm}
+                onOpenEditArchive={onOpenEditArchive}
+                displayMode={displayMode}
               />
             ))}
           </div>

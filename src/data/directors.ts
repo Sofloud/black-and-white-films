@@ -70,6 +70,23 @@ export const DIRECTORS_DATA: DirectorInfo[] = [
       'There is no terror in the bang, only in the anticipation of it.'
   },
   {
+    id: 'cocteau',
+    name: 'Jean Cocteau',
+    nativeName: 'Jean Maurice Eugène Clément Cocteau',
+    lifespan: '1889 – 1963',
+    nationality: 'France',
+    signatureStyle:
+      'Poetic surrealism, mythological transposition of Orpheus, living statues, mirror gateways into the unconscious, and tactile magical in-camera trick effects.',
+    thematicFixations: [
+      'The torment and immortality of the poet',
+      'Mirrors as permeable thresholds between life and death',
+      'The duality of beast and beauty',
+      'Dream logic and classical mythological reinvention'
+    ],
+    quote:
+      'Film will only become an art when its materials are as inexpensive as pencil and paper.'
+  },
+  {
     id: 'pawlikowski',
     name: 'Paweł Pawlikowski',
     nativeName: 'Paweł Aleksander Pawlikowski',
